@@ -1,6 +1,6 @@
 <?php
 
-    include_once '../includes/db.php';
+    include_once '../includes/dbConnection.php';
 
 print_r($_POST);
 
@@ -34,7 +34,9 @@ function login($user,$pass){
             $password=$result['password'];
 
             if ($pass===$password) {
-                header("Location:home.html");
+                session_start();
+                $_SESSION['user']='$user';
+                header("Location:home.php");
                 
             } else {
                 header("Location:login.php?err");

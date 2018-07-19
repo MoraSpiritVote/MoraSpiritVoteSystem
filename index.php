@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<?php
+
+	// we've writen this code where we need
+	function __autoload($classname) {
+		$filename = "includes/". $classname .".php";
+		include_once($filename);
+	}
+
+   session_start();
+
+	$fr=new frontPage();
+	$_SESSION['object']=$fr;
+
+
+?>
 <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
@@ -135,7 +150,7 @@
 					<!-- end single slide -->
 					
 					<!-- single slide -->
-					<div class="item" style="background-image: url("");">
+					<div class="item" style="background-image: url(img/works/item-4.jpg)";>
 						<div class="carousel-caption">
 							<h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span>Inter University Games</span>!</h2>
 							<h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">Vote For Your Player</span></h3>
@@ -491,15 +506,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-						<div class="footer-single">
-							<h6>Login</h6>
-							<ul>
-								<li><a href="Admin/login.php">Admin</a></li>
-								
-							</ul>
-						</div>
-					</div>
+					
 					
 				</div>
 				<div class="row">

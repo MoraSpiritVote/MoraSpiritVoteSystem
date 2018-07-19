@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+
+<?php
+
+// we've writen this code where we need
+function __autoload($classname) {
+	$filename = "../../includes/". $classname .".php";
+	include_once($filename);
+}
+
+session_start();
+
+
+$vp=new frontPage();
+
+$_SESSION['object']=$vp;
+
+
+
+
+
+?>
 <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
@@ -24,33 +45,33 @@
 		<!-- CSS
 		================================================== -->
 		<!-- Fontawesome Icon font -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../css/font-awesome.min.css">
 		<!-- Twitter Bootstrap css -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../css/bootstrap.min.css">
 		<!-- jquery.fancybox  -->
-        <link rel="stylesheet" href="css/jquery.fancybox.css">
+        <link rel="stylesheet" href="../../css/jquery.fancybox.css">
 		<!-- animate -->
-        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="../../css/animate.css">
 		<!-- Main Stylesheet -->
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="../../css/main.css">
 		<!-- media-queries -->
-		<link rel="stylesheet" href="css/media-queries.css">
+		<link rel="stylesheet" href="../../css/media-queries.css">
 		<!-- vote popup page -->
-		<link rel="stylesheet" href="css/vote.css">
-		<!--font style-->
-		<link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet'>
+		<link rel="stylesheet" href="../../css/vote.css">
 
 		<!-- Modernizer Script for old Browsers -->
-        <script src="js/modernizr-2.6.2.min.js"></script>
+        <script src="../../js/modernizr-2.6.2.min.js"></script>
 
     </head>
 	
-    <body id="body">
+    <body>
+
+		
 
 	
 		<!-- preloader -->
 		<div id="preloader">
-			<img src="img/preloader.gif" alt="Preloader">
+			<img src="../../img/preloader.gif" alt="Preloader">
 		</div>
 		<!-- end preloader -->
 
@@ -59,7 +80,7 @@
         ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
             <div class="container">
-                <div class="navbar-header" style="height:30px;">
+                <div class="navbar-header">
                     <!-- responsive nav button -->
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -70,19 +91,15 @@
 					<!-- logo -->
                     <a class="navbar-brand" href="#body">
 						<h1 id="logo">
-							<img style="margin-left:10px;" src="img/moraspirit_logo.png" alt="Brandi">
+							<img src="../../img/moraspirit_logo.png" alt="Brandi">
 						</h1>
-						
 					</a>
 					<!-- /logo -->
-					
-				</div>
-				<h3 style="font-family:Aladin;font-size:30px;">2018</h3>
+                </div>
 
 				<!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
-					
-					<ul id="nav" class="nav navbar-nav">
+                    <ul id="nav" class="nav navbar-nav">
                         <li class="current"><a href="#body">Home</a></li>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#works">Work</a></li>
@@ -118,10 +135,14 @@
 				<div class="carousel-inner" role="listbox">
 					
 					<!-- single slide -->
-					<div class="item active" style="background-image: url(img/LakeRider.jpg);">
+					<div class="item active" style="background-image: url(../../img/<?php print($vp->getSlideImage1()) ?>);">
 						<div class="carousel-caption">
-							<h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span> Inter University Games</span>!</h2>
-							<h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">Vote For Your Player</span></h3>
+
+						
+						<button class="edit_button" onclick="document.getElementById('id02').style.display='block'"><i class="fa fa-edit"></i>Edit</button>	
+							<h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php print($vp->getmainQuoteInImage1())    ?></span>!</h2>
+							
+							<h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color"><?php print($vp->getsmallQuoteInImage1())?></span></h3>
 							<p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>
 							
 							<ul class="social-links text-center">
@@ -131,14 +152,16 @@
 								<li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
 							</ul>
 						</div>
+						
 					</div>
 					<!-- end single slide -->
 					
 					<!-- single slide -->
-					<div class="item" style="background-image: url("");">
+					<div class="item" style="background-image: url(../../img/<?php print($vp->getSlideImage2()) ?>);">
 						<div class="carousel-caption">
-							<h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span>Inter University Games</span>!</h2>
-							<h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">Vote For Your Player</span></h3>
+						<button class="edit_button" onclick="document.getElementById('id02').style.display='block'"><i class="fa fa-edit"></i>Edit</button>
+							<h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php print($vp->getmainQuoteInImage2())    ?></span>!</h2>
+							<h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color"><?php print($vp->getsmallQuoteInImage2())?></span></h3>
 							<p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
 							
 							<ul class="social-links text-center">
@@ -151,7 +174,8 @@
 					</div>
 					<!-- end single slide -->
 					
-				</div>
+                </div>
+               
 				<!-- End Wrapper for slides -->
 				
 			</div>
@@ -196,77 +220,75 @@
 			
 			<div class="project-wrapper">
 			
-				<figure class="mix work-item">
-					<img class="voted_image" src="img/works/item-1.jpg" alt="">
+				<figure class="mix work-item branding">
+					<img class="voted_image" src="../../img/works/item-1.jpg" alt="">
 					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-1.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="../../img/works/item-1.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Sachintha Dhananjana</h4>
 						
 						<p>Photography</p>
-						<button class="vote_button" style="width:80px;" onclick="document.getElementById('id01').style.display='block'">Vote</button>
-					<!--if already voted-->
-						<button disabled="disabled" class="vote_button_disabled" style="width:80px;">Vote</button>
+						
 					</figcaption>
 				</figure>
 				
-				<figure class="mix work-item">
-					<img src="img/works/item-2.jpg" alt="">
+				<figure class="mix work-item web">
+					<img src="../../img/works/item-2.jpg" alt="">
 					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-2.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="../../img/works/item-2.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Labore et dolore magnam</h4>
 						<p>Photography</p>
 					</figcaption>
 				</figure>
 				
 				<figure class="mix work-item logo-design">
-					<img src="img/works/item-3.jpg" alt="">
+					<img src="../../img/works/item-3.jpg" alt="">
 					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-3.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="../../img/works/item-3.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Labore et dolore magnam</h4>
 						<p>Photography</p>
 					</figcaption>
 				</figure>
 				
 				<figure class="mix work-item photography">
-					<img src="img/works/item-4.jpg" alt="">
+					<img src="../../img/works/item-4.jpg" alt="">
 					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-4.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="../../img/works/item-4.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Labore et dolore magnam</h4>
 						<p>Photography</p>
 					</figcaption>
 				</figure>
 			
 				<figure class="mix work-item branding">
-					<img src="img/works/item-5.jpg" alt="">
+					<img src="../../img/works/item-5.jpg" alt="">
 					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-5.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="../../img/works/item-5.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Labore et dolore magnam</h4>
 						<p>Photography</p>
 					</figcaption>
 				</figure>
 				
 				<figure class="mix work-item web">
-					<img src="img/works/item-6.jpg" alt="">
+					<img src="../../img/works/item-6.jpg" alt="">
 					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-6.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="../../img/works/item-6.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Labore et dolore magnam</h4>
 						<p>Photography</p>
 					</figcaption>
 				</figure>
 				
 				<figure class="mix work-item logo-design">
-					<img src="img/works/item-7.jpg" alt="">
+					<img src="../../img/works/item-7.jpg" alt="">
 					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-7.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="../../img/works/item-7.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Labore et dolore magnam</h4>
 						<p>Photography</p>
 					</figcaption>
 				</figure>
 				
 				<figure class="mix work-item photography">
-					<img src="img/works/item-8.jpg" alt="">
+					<img src="../../img/works/item-8.jpg" alt="">
 					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-8.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="../../img/works/item-8.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Labore et dolore magnam</h4>
 						<p>Photography</p>
 					</figcaption>
@@ -274,47 +296,115 @@
 				
 			</div>
 
-			<!--popup voting form-->
+			
 
-						<!-- The Modal -->
-			<div id="id01" class="modal">
-				<span onclick="document.getElementById('id01').style.display='none'" 
-			class="close" title="Close Modal">&times;</span>
+			<!--===============edit form=====================================-->
+				<!-- The Modal -->
+		    <div id="id02" class="modal">
+				<span onclick="document.getElementById('id02').style.display='none'" 
+				class="close" title="Close Modal">&times;</span>
 			
 				<!-- Modal Content -->
-				<form class="modal-content animate" action="/action_page.php">
-				<div class="imgcontainer">
-					<img src="img/team/member-1.png" alt="Avatar" class="avatar">
-				</div>
+				<form class="modal-content animate" method="Post" enctype="multipart/form-data" action="slide_element_edit_proccess.php">
+				
 			
-				<div class="vote_container">
+				<div class="vote_container" >
+					<label><h2>Slide 1</h2></label>
+					<br>
+					<label>Image</label>
+					<br>
+					<input type="file" name="image1">
+					<br><div style="width:180px;height:90px;background-color:white;margin-left:5px;border:2px solid black;">
+						<img src="../../img/<?php print($vp->getSlideImage1())?>" width="176px" height="86px" alt="">
+					</div>
+					<label>Quote 1</label>
+					<input type="text" name="mainQuoteInImage1" value="<?php print($vp->getmainQuoteInImage1())?>">
+					<label>Quote 2</label>
+					<input type="text" name="smallQuoteInImage1" value="<?php print($vp->getsmallQuoteInImage1())?>">
 
-					<label>Sachintha Dhananjana</label>
+					
+					<hr>
+					<label><h2>Slide 2</h2></label>
+					<br>
+					<label>Image</label>
+					<br>
+					<input type="file" name="image2">
+					<br><div style="width:180px;height:90px;background-color:white;margin-left:5px;border:2px solid black;">
+						<img src="../../img/<?php print($vp->getSlideImage2())?>" width="176px" height="86px" alt="">
+					</div>
+					<label>Quote 1</label>
+					<input type="text" name="mainQuoteInImage2" value="<?php print($vp->getmainQuoteInImage2())?>">
+					<label>Quote 2</label>
+					<input type="text" name="smallQuoteInImage2" value="<?php print($vp->getsmallQuoteInImage2())?>">
 					
 			
 				
 			
-					<button class="vote_button" style="width: 80px;" type="submit">Vote</button>
+					<button class="vote_button" style="width: 80px;" type="submit" name="submit" >submit</button>
+				<span>	<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button></span>
+
 					
-				</div>
 			
 				
 				</form>
 
 				<script>
 					// Get the modal
-					var modal = document.getElementById('id01');
+					var modal2 = document.getElementById('id02');
 					
 					// When the user clicks anywhere outside of the modal, close it
 					window.onclick = function(event) {
-						if (event.target == modal) {
-							modal.style.display = "none";
+						if (event.target == modal2) {
+							modal2.style.display = "none";
 						}
 					}
 					</script>
 			</div>
 
-			<!--end popup voting form-->
+			
+
+
+
+			<!--================edit form=======================-->
+
+
+			<!--========================feedback msg=============================-->
+			<div id="feed" class="modal">
+				<span onclick="document.getElementById('feed').style.display='none'" 
+				class="close" title="Close Modal">&times;</span>
+			
+				<!-- Modal Content -->
+				<div class="imgcontainer">
+					<img src="../../img/success_icon.jpg" alt="Avatar" class="avatar">
+				</div>
+				
+			
+				<div class="vote_container" >
+					
+
+					
+					
+				<span>	<button type="button" onclick="document.getElementById('feed').style.display='none'" class="cancelbtn">Cancel</button></span>
+
+					
+			
+				
+				
+
+			
+			</div>
+
+			
+
+
+
+
+
+
+
+			
+			<!--=============feedback msg===========================-->
+
 		
 
 		</section>
@@ -491,15 +581,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-						<div class="footer-single">
-							<h6>Login</h6>
-							<ul>
-								<li><a href="Admin/login.php">Admin</a></li>
-								
-							</ul>
-						</div>
-					</div>
+					
 					
 				</div>
 				<div class="row">
@@ -517,30 +599,30 @@
 		<!-- Essential jQuery Plugins
 		================================================== -->
 		<!-- Main jQuery -->
-        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/jquery-1.11.1.min.js"></script>
 		<!-- Single Page Nav -->
-        <script src="js/jquery.singlePageNav.min.js"></script>
+        <script src="../../js/jquery.singlePageNav.min.js"></script>
 		<!-- Twitter Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
 		<!-- jquery.fancybox.pack -->
-        <script src="js/jquery.fancybox.pack.js"></script>
+        <script src="../../js/jquery.fancybox.pack.js"></script>
 		<!-- jquery.mixitup.min -->
-        <script src="js/jquery.mixitup.min.js"></script>
+        <script src="../../js/jquery.mixitup.min.js"></script>
 		<!-- jquery.parallax -->
-        <script src="js/jquery.parallax-1.1.3.js"></script>
+        <script src="../../js/jquery.parallax-1.1.3.js"></script>
 		<!-- jquery.countTo -->
-        <script src="js/jquery-countTo.js"></script>
+        <script src="../../js/jquery-countTo.js"></script>
 		<!-- jquery.appear -->
-        <script src="js/jquery.appear.js"></script>
+        <script src="../../js/jquery.appear.js"></script>
 		<!-- Contact form validation -->
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
 		<!-- Google Map -->
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<!-- jquery easing -->
-        <script src="js/jquery.easing.min.js"></script>
+        <script src="../../js/jquery.easing.min.js"></script>
 		<!-- jquery easing -->
-        <script src="js/wow.min.js"></script>
+        <script src="../../js/wow.min.js"></script>
 		<script>
 			var wow = new WOW ({
 				boxClass:     'wow',      // animated element css class (default is wow)
@@ -553,7 +635,7 @@
 			wow.init();
 		</script> 
 		<!-- Custom Functions -->
-        <script src="js/custom.js"></script>
+        <script src="../../js/custom.js"></script>
 		
 		<script type="text/javascript">
 			$(function(){

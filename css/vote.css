@@ -1,4 +1,4 @@
-
+body {font-family: Arial, Helvetica, sans-serif;}
 /* Bordered form */
 form {
     border: 3px solid #f1f1f1;
@@ -23,6 +23,23 @@ input[type=text], input[type=password] {
     border: none;
     cursor: pointer;
     width: 100%;
+}
+
+.edit_button {
+    background-color: rgba(10, 15, 10, 0.801);
+    color: white;
+    opacity:0.5;
+    padding:7px 5px;
+    left:0px;
+     
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width:90px;
+}
+
+.edit_button:hover{
+    opacity:1;
 }
 /*set style for disabled button*/
 .vote_button_disabled {
@@ -49,9 +66,11 @@ input[type=text], input[type=password] {
 
 /* Extra style for the cancel button (red) */
 .cancelbtn {
-    width: auto;
+    width: 80px;
+    margin-left:80%;
     padding: 10px 18px;
     background-color: #f44336;
+    color: white;
 }
 
 /* Center the avatar image inside this container */
@@ -68,7 +87,8 @@ img.avatar {
 
 /* Add padding to containers */
 .vote_container {
-    padding: 16px;
+    padding: 10px;
+    
 }
 
 /* The "Forgot password" text */
@@ -89,19 +109,6 @@ span.psw {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -110,7 +117,8 @@ span.psw {
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    height:100%; /* Full height */
+    overflow: auto;
 
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -120,8 +128,9 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 5px auto; /* 15% from the top and centered */
+    margin: 10px auto; /* 15% from the top and centered */
     top: 20%;
+    
     border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */
 }
