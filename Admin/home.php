@@ -3,6 +3,16 @@
 
 session_start();
 
+// we've writen this code where we need
+function __autoload($classname) {
+	$filename = "../includes/". $classname .".php";
+	include_once($filename);
+}
+
+$pm=new playerManager();
+
+$_SESSION['PM_object']=$pm;
+
 
 
 
@@ -18,6 +28,17 @@ session_start();
 	<link href="../css/font-awesome1.min.css" rel="stylesheet">
 	<link href="../css/datepicker3.css" rel="stylesheet">
 	<link href="../css/styles.css" rel="stylesheet">
+	<!-- vote popup page -->
+	<link rel="stylesheet" href="../css/vote.css">
+	
+	<link rel="icon" type="image/png" href="includes/images/icons/favicon.ico"/>
+	
+	
+	<link rel="stylesheet" type="text/css" href="includes/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="includes/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="includes/vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="includes/css/util.css">
+	<link rel="stylesheet" type="text/css" href="includes/css/main.css">
 	
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -142,363 +163,274 @@ session_start();
 				<li class="active">Dashboard</li>
 			</ol>
 		</div><!--/.row-->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+
+		<!--======================================================-->
+		<div class="limiter">
+		<div class="container-table100" style="background:#e9ecf2;">
+			<h2>Nominated Players</h2>
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Player Name</th>
+								<th class="column2">Player's University</th>
+								<th class="column3">Participating Sport</th>
+								<th class="column4">Number of Votes</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$players=$pm->getPlayers();
+							
+
+							for ($i=0; $i <count($players) ; $i++) {
+								$id;
+								$player;
+								$uni='';
+								$sport='';
+								$image='';
+								$votes='';
+
+								foreach ($players[$i] as $x => $x_value) {
+									if ($x=='id') {
+									
+										$id=$x_value;
+								
+									}elseif ($x=='player_name') {
+										$player=$x_value;
+									}elseif ($x=='university') {
+										$uni=$x_value;
+									}elseif ($x=='sport') {
+										$sport=$x_value;
+									}elseif ($x=='image') {
+										$image=$x_value;
+									}elseif ($x=='number_of_votes') {
+										$votes=$x_value;
+									}
+									
+								}
+
+								echo'
+
+								<tr>
+										<td class="column1" onclick="document.getElementById(\''.$id.'\').style.display=\'block\'">'.$player.'</td>
+										<td class="column2">'.$uni.'</td>
+										<td class="column3">'.$sport.'</td>
+										<td class="column4">'.$votes.'</td>
+				
+										
+								</tr>
+								';
+
+
+
+							}
+							
+				
+							
+							
+							
+							
+							
+							?>
+
+
+
+								
+								
+								
+								
+								
+						</tbody>
+					</table>
+					<?php
+							
+
+							for ($j=0; $j <count($players) ; $j++) {
+								$id='';
+								$player='';
+								$uni='';
+								$sport='';
+								$image='';
+								$votes='';
+
+								foreach ($players[$j] as $y => $y_value) {
+									if ($y=='id') {
+										
+										$id=$y_value;
+							
+									}elseif ($y=='player_name') {
+										$player=$y_value;
+									}elseif ($y=='university') {
+										$uni=$y_value;
+									}elseif ($y=='sport') {
+										$sport=$y_value;
+									}elseif ($y=='image') {
+										$image=$y_value;
+									}elseif ($y=='number_of_votes') {
+										$votes=$y_value;
+									}
+									
+								}
+
+								
+
+								if ($image=='') {
+									$img="no person.jpg";
+								}else {
+									$img=$image;
+								}
+
+								
+
+								echo'
+
+								<!--popup voting form-->
+
+									<!-- The Modal -->
+						<div id="'.$id.'" class="modal">
+							<span onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="close" title="Close Modal">&times;</span>
+						
+							<!-- Modal Content -->
+							<form class="modal-content animate" method="Post" enctype="multipart/form-data" action="playersEditProccess.php?id='.$id.'&im='.$image.'">
+							<div class="imgcontainer">
+								<img src="../img/players/'.$img.'" alt="Avatar" class="avatar" onclick="document.getElementById(\'image'.$id.'\').style.display=\'block\'" >
+								<button class="vote_button" style="width: 80px;background-color:red;" name="delete" onclick="window.alert(\'are you sure you want to delete this player?\')" type="submit">Delete</button>
+								</div>
+						
+							<div class="vote_container">
+
+								<input type="file" id="image'.$id.'" name="image" style="display:none;" >
+								<br>
+								
+								<label>Player Name</label>
+								<input type="text" name="player" value="'.$player.'">
+								<label>University Name</label>
+								<input type="text" name="uni" value="'.$uni.'" >
+								<label>Participating Sport</label>
+								<input type="text" name="sport" value="'.$sport.'">
+
+								
+						
+								<button class="vote_button" style="width: 80px;" name="submit" type="submit">Submit</button>
+								<span><button type="button" onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="vote_button" style="background-color:red;width:80px;">Cancel</button></span >
+								
+						
+								
+								
+							</div>
+						
+							
+							</form>
+							
+
+							
+						</div>
+
+						<!--end popup voting form-->
+								';
+
+
+
+							}
+							
+				
+							
+							
+							
+							
+							
+							?>
+
+
+
+
+
+
+
+
+
+				</div>
 			</div>
-		</div><!--/.row-->
-		
-		<div class="panel panel-container">
-			<div class="row">
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">120</div>
-							<div class="text-muted">New Orders</div>
-						</div>
-					</div>
+
+			<button class="vote_button" onclick="document.getElementById('add').style.display='block'">Add Player</button>
+
+			<!--popup voting form-->
+
+						<!-- The Modal -->
+						<div id="add" class="modal">
+				<span onclick="document.getElementById('add').style.display='none'" class="close" title="Close Modal">&times;</span>
+			
+				<!-- Modal Content -->
+				<form class="modal-content animate" method="Post" enctype="multipart/form-data" action="addPlayerProccess.php">
+				<div class="imgcontainer">
+					<img src="../img/players/no person.jpg" alt="Avatar" class="avatar" onclick="document.getElementById('photoChooser').style.display='block'" >
 				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-blue panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
-							<div class="large">52</div>
-							<div class="text-muted">Comments</div>
-						</div>
+			
+				<div class="vote_container">
+					<div id="photoChooser" style="display:none;">
+						<label>Image</label>
+					<input type="file" name="image"  >
 					</div>
+					<br>
+					
+					<label>Player Name</label>
+					<input type="text" name="player" required>
+					<label>University Name</label>
+					<input type="text" name="uni" required >
+					<label>Participating Sport</label>
+					<input type="text" name="sport" required>
+
+					
+			
+				
+			
+					<button class="vote_button" style="width: 80px;" name="submit" type="submit">Submit</button>
+					
+					<span><button type="button" onclick="document.getElementById('add').style.display='none'" class="vote_button" style="background-color:red;width:80px;">Cancel</button></span >
+					
 				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">New Users</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
-							<div class="large">25.2k</div>
-							<div class="text-muted">Page Views</div>
-						</div>
-					</div>
-				</div>
-			</div><!--/.row-->
+			
+				
+				</form>
+
+				<script>
+					// Get the modal
+					var modaladd = document.getElementById('add');
+					
+					// When the user clicks anywhere outside of the modal, close it
+					window.onclick = function(event) {
+						if (event.target == modaladd) {
+							modaladd.style.display = "none";
+						}
+					}
+					</script>
+			</div>
+
+			<!--end popup voting form-->
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						Site Traffic Overview
-						<ul class="pull-right panel-settings panel-button-tab-right">
-							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-								<em class="fa fa-cogs"></em>
-							</a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li>
-										<ul class="dropdown-settings">
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 1
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 2
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 3
-											</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/.row-->
+	</div>
 		
-		<div class="row">
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>New Orders</h4>
-						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Comments</h4>
-						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>New Users</h4>
-						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Visitors</h4>
-						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span></div>
-					</div>
-				</div>
-			</div>
-		</div><!--/.row-->
 		
-		<div class="row">
-			<div class="col-md-6">
-				<div class="panel panel-default chat">
-					<div class="panel-heading">
-						Chat
-						<ul class="pull-right panel-settings panel-button-tab-right">
-							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-								<em class="fa fa-cogs"></em>
-							</a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li>
-										<ul class="dropdown-settings">
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 1
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 2
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 3
-											</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body">
-						<ul>
-							<li class="left clearfix"><span class="chat-img pull-left">
-								<img src="http://placehold.it/60/30a5ff/fff" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header"><strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small></div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc.</p>
-								</div>
-							</li>
-							<li class="right clearfix"><span class="chat-img pull-right">
-								<img src="http://placehold.it/60/dde0e6/5f6468" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header"><strong class="pull-left primary-font">Jane Doe</strong> <small class="text-muted">6 mins ago</small></div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc.</p>
-								</div>
-							</li>
-							<li class="left clearfix"><span class="chat-img pull-left">
-								<img src="http://placehold.it/60/30a5ff/fff" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header"><strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small></div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc.</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="panel-footer">
-						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-md" placeholder="Type your message here..." /><span class="input-group-btn">
-								<button class="btn btn-primary btn-md" id="btn-chat">Send</button>
-						</span></div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						To-do List
-						<ul class="pull-right panel-settings panel-button-tab-right">
-							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-								<em class="fa fa-cogs"></em>
-							</a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li>
-										<ul class="dropdown-settings">
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 1
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 2
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 3
-											</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body">
-						<ul class="todo-list">
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-1" />
-									<label for="checkbox-1">Make coffee</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-2" />
-									<label for="checkbox-2">Check emails</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-3" />
-									<label for="checkbox-3">Reply to Jane</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-4" />
-									<label for="checkbox-4">Make more coffee</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-5" />
-									<label for="checkbox-5">Work on the new design</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-6" />
-									<label for="checkbox-6">Get feedback on design</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-						</ul>
-					</div>
-					<div class="panel-footer">
-						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-md" placeholder="Add new task" /><span class="input-group-btn">
-								<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
-						</span></div>
-					</div>
-				</div>
-			</div><!--/.col-->
-			
-			
-			<div class="col-md-6">
-				<div class="panel panel-default ">
-					<div class="panel-heading">
-						Timeline
-						<ul class="pull-right panel-settings panel-button-tab-right">
-							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-								<em class="fa fa-cogs"></em>
-							</a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li>
-										<ul class="dropdown-settings">
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 1
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 2
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 3
-											</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body timeline-container">
-						<ul class="timeline">
-							<li>
-								<div class="timeline-badge"><em class="glyphicon glyphicon-pushpin"></em></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h4 class="timeline-title">Lorem ipsum dolor sit amet</h4>
-									</div>
-									<div class="timeline-body">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="timeline-badge primary"><em class="glyphicon glyphicon-link"></em></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h4 class="timeline-title">Lorem ipsum dolor sit amet</h4>
-									</div>
-									<div class="timeline-body">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="timeline-badge"><em class="glyphicon glyphicon-camera"></em></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h4 class="timeline-title">Lorem ipsum dolor sit amet</h4>
-									</div>
-									<div class="timeline-body">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="timeline-badge"><em class="glyphicon glyphicon-paperclip"></em></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h4 class="timeline-title">Lorem ipsum dolor sit amet</h4>
-									</div>
-									<div class="timeline-body">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div><!--/.col-->
-			<div class="col-sm-12">
-				<p class="back-link">Lumino Theme by <a href="https://www.medialoot.com">Medialoot</a></p>
-			</div>
-		</div><!--/.row-->
+		
+		<!--======================================================-->
+		
+		
+		
+		
+
+
+		
+		
+		
+		
+		
 	</div>	<!--/.main-->
 	
 	<script src="../js/jquery-1.11.1.min.js"></script>
@@ -509,17 +441,7 @@ session_start();
 	<script src="../js/easypiechart-data.js"></script>
 	<script src="../js/bootstrap-datepicker.js"></script>
 	<script src="../js/custom1.js"></script>
-	<script>
-		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
-	</script>
+
 		
 </body>
 </html>

@@ -27,6 +27,8 @@ class frontPage extends dbConnection{
                     $a[]=$result;
                    
                 }
+
+                
               
 
                 for ($i=0; $i <count($a) ; $i++) { 

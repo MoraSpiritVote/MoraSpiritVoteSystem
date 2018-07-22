@@ -157,7 +157,7 @@ $_SESSION['object']=$vp;
 					<!-- end single slide -->
 					
 					<!-- single slide -->
-					<div class="item" style="background-image: url(../../img/<?php print($vp->getSlideImage2()) ?>);">
+					<div class="item" style="background-image: url(../../img/<?php print($vp->getSlideImage2()) ?>)">
 						<div class="carousel-caption">
 						<button class="edit_button" onclick="document.getElementById('id02').style.display='block'"><i class="fa fa-edit"></i>Edit</button>
 							<h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php print($vp->getmainQuoteInImage2())    ?></span>!</h2>
