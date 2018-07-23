@@ -6,7 +6,7 @@ if (isset($_SESSION['access_token'])) {
 	exit();
 }
 
-$redirectURL = "https://localhost/Home.php";
+$redirectURL = "https://localhost/MoraSpiritVoteSystem/fb-callback.php";
 
 $permissions = ['email'];
 
