@@ -1,10 +1,31 @@
 <?php
 
+
+session_start();
+
+if (isset($_SESSION['user'])) {
+	
+	$user=$_SESSION['user'];
+}else{
+	echo"eeeeeeeeeeeee";
+	header("Location:login.php");
+}
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    
+    logout();
+}
+function logout()
+{
+
+    unset($_SESSION['user']);
+    header("Location:login.php");
+    exit;
+}
 function __autoload($classname) {
 	$filename = "../includes/". $classname .".php";
 	include_once($filename);
 }
-session_start();
+
 $pm=$_SESSION['PM_object'];
 
 $id=$_GET['id'];

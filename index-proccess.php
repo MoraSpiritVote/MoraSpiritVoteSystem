@@ -1,13 +1,15 @@
 <?php
 
-    include_once '../includes/dbConnection.php';
+    include_once 'includes/dbConnection.php';
 
 print_r($_POST);
 
 if (isset($_POST)) {
     $user=$_POST['Username'];
     $pass=$_POST['password'];
-    $encPass=md5($pass);
+    $encPass=$pass;
+    print($encPass);
+
     login($user,$encPass);
 
 
@@ -23,23 +25,30 @@ if (isset($_POST)) {
 
 function login($user,$pass){
     $dbConn = new dbConnection();
-    $sql="SELECT `password` FROM `admin_list` WHERE `username`='$user'";
+    $sql="SELECT `password` FROM `user_reg` WHERE `username`='$user'";
     $conn=$dbConn->connect();
     if ($conn) {
+        echo"qqqqqqq";
         
         if ($ex=$conn->query($sql)) {
             unset($dbConn);
             $result=mysqli_fetch_assoc($ex);
             print_r($result);
             $password=$result['password'];
+            echo'<br>';
+            print($pass);
+            echo'<br>';
+            print($password);
+            print(strcmp($pass,$password));
 
-            if ($pass===$password) {
+            if ($pass==$password) {
+                echo"kkkkkkkk";
                 session_start();
                 $_SESSION['user']=$user;
-                header("Location:home.php");
+                header("Location:Home.php");
                 
             } else {
-                header("Location:login.php?err");
+                header("Location:index.php?err");
             }
             
             

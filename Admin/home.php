@@ -2,6 +2,31 @@
 <?php
 
 session_start();
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // request 30 minates ago
+    session_destroy();
+    session_unset();
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time
+
+if (isset($_SESSION['user'])) {
+	
+	$user=$_SESSION['user'];
+}else{
+	echo"eeeeeeeeeeeee";
+	header("Location:login.php");
+}
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    
+    logout();
+}
+function logout()
+{
+
+    unset($_SESSION['user']);
+    header("Location:login.php");
+    exit;
+}
 
 // we've writen this code where we need
 function __autoload($classname) {
@@ -90,7 +115,7 @@ $_SESSION['PM_object']=$pm;
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<em class="fa fa-bell"></em><span class="label label-info">5</span>
-					</a>
+						</a>
 						<ul class="dropdown-menu dropdown-alerts">
 							<li><a href="#">
 								<div><em class="fa fa-envelope"></em> 1 New Message
@@ -108,6 +133,11 @@ $_SESSION['PM_object']=$pm;
 							</a></li>
 						</ul>
 					</li>
+					<?php
+					if (isset($_SESSION['user'])) {
+                        echo 'loggedin: ' . strtoupper($user) . ' &nbsp;<a href="?logout=true"><strong>logout</strong></a>';
+					}
+					?>
 				</ul>
 			</div>
 		</div><!-- /.container-fluid -->

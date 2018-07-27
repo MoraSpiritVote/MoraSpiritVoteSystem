@@ -1,3 +1,30 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['user'])) {
+	
+	$user=$_SESSION['user'];
+}else{
+	echo"eeeeeeeeeeeee";
+	header("Location:login.php");
+}
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    
+    logout();
+}
+function logout()
+{
+
+    unset($_SESSION['user']);
+    header("Location:login.php");
+    exit;
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>

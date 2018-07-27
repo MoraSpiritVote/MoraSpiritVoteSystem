@@ -1,10 +1,39 @@
 <?php
 
+
+session_start();
+
+if (isset($_SESSION['user'])) {
+	
+	$user=$_SESSION['user'];
+}else{
+	echo"eeeeeeeeeeeee";
+	header("Location:login.php");
+}
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    
+    logout();
+}
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // request 30 minates ago
+    session_destroy();
+    session_unset();
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time
+function logout()
+{
+
+    unset($_SESSION['user']);
+
+    header("Location:login.php");
+    exit;
+}
+
 function __autoload($classname) {
 	$filename = "../includes/". $classname .".php";
 	include_once($filename);
 }
-session_start();
+
 $pm=$_SESSION['PM_object'];
 echo"11111111111111111111";
 

@@ -128,7 +128,7 @@
             return $r;
         }
 
-        /*public function getSpecificPlayer($id){
+        public function getSpecificPlayer($id){
             $sql="SELECT `player_name`, `university`, `sport`, `image`, `number_of_votes` FROM `vote_table` WHERE `id`='".$id."' ";
             $conn=$this->connect();
             if ($conn) {
@@ -137,7 +137,7 @@
                     mysqli_close($conn);
                     $result=mysqli_fetch_assoc($ex);
 
-                    print_r($this->players);
+                    
                 } 
                 else {
                     die('query not executed!!!');
@@ -149,7 +149,9 @@
             } else {
             die('Connection Failed!!!');
             }
-        }*/
+
+            return $result;
+        }
 
         public function addVote($id){
             $sql="UPDATE `vote_table` SET `number_of_votes`=`number_of_votes`+1 WHERE `id`=$id";
@@ -179,6 +181,132 @@
             return $r;
             
         }
+
+        public function markUserVote($user,$player_id,$time){
+            $sql="INSERT INTO `user_list`(`username`, `voted_player`, `voted_time`) VALUES ('".$user."','".$player_id."','".$time."')";
+            $conn=$this->connect();
+            $r;
+            if ($conn) {
+            
+                if ($ex=$conn->query($sql)) {
+                 
+                    mysqli_close($conn);
+                    $r='0';
+                    
+
+                } else {
+                    $r="1";
+                    //die('query not executed!!!');
+                }
+                
+                
+                
+                
+            } else {
+                $r="2";
+                //die('Connection Failed!!!');
+            }
+
+            return $r;
+            
+        }
+
+        
+        public function getUserVotedPlayer($user){
+            $sql ="SELECT * FROM `user_list` WHERE `username`= '$user' ";
+            $conn=$this->connect();
+            $r;
+            if ($conn) {
+            
+                if ($ex=$conn->query($sql)) {
+                 
+                    mysqli_close($conn);
+                    
+
+                    $result=mysqli_fetch_assoc($ex);
+                    
+
+                    
+                    
+
+                } else {
+                
+                    $result='';
+                    die('query not executed!!!');
+                }
+                
+                
+                
+                
+            } else {
+                
+                $result='';
+                die('Connection Failed!!!');
+            }
+
+        
+            return $result;
+        }
+
+        public function removeVote($id){
+            $sql="UPDATE `vote_table` SET `number_of_votes`=`number_of_votes`-1 WHERE `id`=$id";
+            $conn=$this->connect();
+            $r;
+            if ($conn) {
+            
+                if ($ex=$conn->query($sql)) {
+                 
+                    mysqli_close($conn);
+                    $r='0';
+                    
+
+                } else {
+                    $r="1";
+                    //die('query not executed!!!');
+                }
+                
+                
+                
+                
+            } else {
+                $r="2";
+                //die('Connection Failed!!!');
+            }
+
+            return $r;
+            
+        }
+
+        public function updateUserVote($user,$id,$time){
+            $sql="UPDATE `user_list` SET `voted_player`='$id',`voted_time`='$time' WHERE `username`='$user'";
+            $conn=$this->connect();
+            $r;
+            if ($conn) {
+            
+                if ($ex=$conn->query($sql)) {
+                 
+                    mysqli_close($conn);
+                    $r='0';
+                    
+
+                } else {
+                    $r="1";
+                    //die('query not executed!!!');
+                }
+                
+                
+                
+                
+            } else {
+                $r="2";
+                //die('Connection Failed!!!');
+            }
+
+            return $r;
+            
+        }
+
+
 
 
 

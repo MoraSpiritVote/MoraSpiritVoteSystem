@@ -1,4 +1,3 @@
-
 <?php
 	session_start();
 	// we've writen this code where we need
@@ -8,12 +7,11 @@
 	}
 
    
-	$user=$_SESSION['user'];
+
 	$fr=new frontPage();
 	$_SESSION['object']=$fr;
 	$pl=new playerManager();
 	$_SESSION['pl_object']=$pl;
-	
 
 	
 	
@@ -31,7 +29,7 @@
 		<!-- Always force latest IE rendering engine or request Chrome Frame -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<!-- Page Title -->
-        <title>Mora Spirit Vote</title>		
+        <title>Themefisher.Free Bootstrap3 based HTML5 Templates</title>		
 		<!-- Meta Description -->
         <meta name="description" content="Blue One Page Creative HTML5 Template">
         <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
@@ -198,201 +196,26 @@
 		
 		
         <!--
-        Some fun facts
-        ==================================== -->		
-		
-		<section id="facts" class="facts">
-			<div class="parallax-overlay">
-				<div class="container">
-					<div class="row number-counters">
-						
-						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
-							<h2>Some Fun Facts</h2>
-							<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-						</div>
-
-						<?php
-						
-						$players=$pl->getPlayers();
-						
-
-						for ($i=0; $i <3 ; $i++) {
-							$id;
-							$player;
-							$uni='';
-							$sport='';
-							$image='';
-							$votes='';
-
-							foreach ($players[$i] as $x => $x_value) {
-								if ($x=='id') {
-								
-									$id=$x_value;
-							
-								}elseif ($x=='player_name') {
-									$player=$x_value;
-								}elseif ($x=='university') {
-									$uni=$x_value;
-								}elseif ($x=='sport') {
-									$sport=$x_value;
-								}elseif ($x=='image') {
-									$image=$x_value;
-								}elseif ($x=='number_of_votes') {
-									$votes=$x_value;
-								}
-								
-							}
-
-							if ($image=='') {
-								$img="no person.jpg";
-							}else {
-								$img=$image;
-							}
-
-							
-
-							
-							echo'
-							<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" style="margin-left:30px;">
-							<div class="counters-item">
-							<img src="img/players/'.$image.'" style="border-radius:2000px;" alt="" width="300px" height="300px">
-								<strong data-to="'.$votes.'">0</strong>
-								<!-- Set Your Number here. i,e. data-to="56" -->
-								<p>'.$player.'</p>
-							</div>
-							</div>
-							
-							
-							
-							';
-						
-
-
-
-						}
-						
-			
-						
-						
-						
-						
-						
-						?>
-						
-						
-						
-						
-						?>
-						
-						
-				
-					</div>
-				</div>
-			</div>
-		</section>
-		
-        <!--
-        End Some fun facts
-        ==================================== -->
-
-
-
-
-
-		<!--
         Our Works
         ==================================== -->
 		
 		<section id="works" class="works clearfix">
 			<div class="container">
-				<div class="row" style="align-content: center";>
-
-					
+				<div class="row">
 				
 					<div class="sec-title text-center">
 						<h2>Vote For Your Player</h2>
 						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
 					</div>
-
-						
 					
 					<div class="sec-sub-title text-center">
 						<p>Now you can vote for your favourite player </p>
-						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
 					</div>
 					
-					<div class="project-wrapper" style="margin-left:30%;" >
-
-						
-						<?php
-
-						$voted='0';
-						$voted_id='';
-						if ($p=$pl->getUserVotedPlayer($user)) {
-					
-							$voted='1';
-							$p_id=$p['voted_player'];
-							$voted_id=$p_id;
-							$info=$pl->getSpecificPlayer($p_id);
-							$p_name=$info['player_name'];
-							$p_uni=$info['university'];
-							$p_sport=$info['sport'];
-							$p_image=$info['image'];
-							$p_vote=$info['number_of_votes'];
-							
-
-							echo'
-							<h3 class="sec-sub-title" style="font-weight: 900;color:#0eb493;font-size:30px;" >Player that You have Voted</h3>
-							<br>
-							<div class="project-wrapper">
-							<figure class="mix work-item" style="width:50%">
-							<img src="img/players/'.$p_image.'" alt="" width="400px" height="300px">
-							<span>
-							<div class="sec-sub-title text-center" style="text-align:center;">
-						
-							<p style="font-size: 30px;">'.$p_name.'</p>
-							
-							<p>'.$p_uni.'</p>
-							
-							<p>'.$p_sport.'</p>
-						
-							<p>Number of Votes:'.$p_vote.'</p>
-							
-							
-							</span>
-							
-						</figure>
-						</div>
-						<br>
-						<br>
-						';
-							
-							
-
-
-							
-							
-						}else{
-
-							print($user);
-							echo"3333333";
-						}
-						
-						
-						
-						
-						?>
-						
-						</div>
-						
 					
 					
 				</div>
 			</div>
-			<br>
-			<br>
-			<br>
-			<br>
 			
 			<div class="project-wrapper">
 				<?php
@@ -432,18 +255,6 @@
 									$img=$image;
 								}
 
-								if ($voted=='1') {
-									if ($voted_id==$id){
-										$class='vote_button_disabled';
-									}else{
-										$class='vote_button';
-									}
-								}else{
-									$class='vote_button';
-								}
-
-								
-
 							echo'
 							
 				<figure class="mix work-item">
@@ -454,8 +265,9 @@
 					<h4>'.$player.'</h4>
 					<p>'.$uni.'</p>
 			
-				<button class="'.$class.'" style="width:80px;" onclick="document.getElementById(\''.$id.'\').style.display=\'block\'">Vote</button>
-					
+					<button class="vote_button" style="width:80px;" onclick="document.getElementById(\''.$id.'\').style.display=\'block\'">Vote</button>
+				<!--if already voted-->
+					<button disabled="disabled" class="vote_button_disabled" style="width:80px;">Vote</button>
 				</figcaption>
 				</figure>
 				<!--===========vote block=============-->
@@ -464,7 +276,7 @@
 			class="close" title="Close Modal">&times;</span>
 			
 				<!-- Modal Content -->
-				<form class="modal-content animate" method="Post" action="voteProccess.php?id='.$id.'&voted='.$voted.'&voted_id='.$voted_id.'">
+				<form class="modal-content animate" method="Post" action="voteProccess.php?id='.$id.'">
 				<div class="imgcontainer">
 				<span onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="close" title="Close Modal">×</span>
 					<img src="img/players/'.$img.'" alt="Avatar" class="avatar">
@@ -530,6 +342,66 @@
 		
         <!--
         End Our Works
+        ==================================== -->
+		
+       
+		
+		<!--
+        Some fun facts
+        ==================================== -->		
+		
+		<section id="facts" class="facts">
+			<div class="parallax-overlay">
+				<div class="container">
+					<div class="row number-counters">
+						
+						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
+							<h2>Some Fun Facts</h2>
+							<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+						</div>
+						
+						<!-- first count item -->
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+							<div class="counters-item">
+								<i class="fa fa-clock-o fa-3x"></i>
+								<strong data-to="3200">0</strong>
+								<!-- Set Your Number here. i,e. data-to="56" -->
+								<p>Hours of Work</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+							<div class="counters-item">
+								<i class="fa fa-users fa-3x"></i>
+								<strong data-to="120">0</strong>
+								<!-- Set Your Number here. i,e. data-to="56" -->
+								<p>Satisfied Clients</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
+							<div class="counters-item">
+								<i class="fa fa-rocket fa-3x"></i>
+								<strong data-to="360">0</strong>
+								<!-- Set Your Number here. i,e. data-to="56" -->
+								<p> Projects Delivered </p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
+							<div class="counters-item">
+								<i class="fa fa-trophy fa-3x"></i>
+								<strong data-to="6454">0</strong>
+								<!-- Set Your Number here. i,e. data-to="56" -->
+								<p>Awards Won</p>
+							</div>
+						</div>
+						<!-- end first count item -->
+				
+					</div>
+				</div>
+			</div>
+		</section>
+		
+        <!--
+        End Some fun facts
         ==================================== -->
 		
 		

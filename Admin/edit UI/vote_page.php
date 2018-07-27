@@ -2,13 +2,40 @@
 
 <?php
 
+session_start();
+
+if (isset($_SESSION['user'])) {
+
+	$user=$_SESSION['user'];
+}else{
+	echo"eeeeeeeeeeeee";
+	header("Location:../login.php");
+}
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // request 30 minates ago
+    session_destroy();
+    session_unset();
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    
+    logout();
+}
+function logout()
+{
+
+    unset($_SESSION['user']);
+    header("Location:../login.php");
+    exit;
+}
+
 // we've writen this code where we need
 function __autoload($classname) {
 	$filename = "../../includes/". $classname .".php";
 	include_once($filename);
 }
 
-session_start();
+
 
 
 $vp=new frontPage();
