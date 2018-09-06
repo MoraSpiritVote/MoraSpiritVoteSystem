@@ -4,28 +4,15 @@
 
 print_r($_POST);
 
-if (isset($_POST)) {
-    $user=$_POST['Username'];
-    $pass=$_POST['password'];
-    $encPass=$pass;
-    print($encPass);
-
-    login($user,$encPass);
-
-
-   
-    
-    
-    
+$uid=$_GET['uid'];
+login($uid);
 
 
 
-}
-
-
-function login($user,$pass){
+function login($uid){
     $dbConn = new dbConnection();
-    $sql="SELECT `password` FROM `user_reg` WHERE `username`='$user'";
+    $sql="INSERT INTO user_list (uid,voted_player, voted_time) SELECT '".$uid."','','' FROM DUAL WHERE NOT EXISTS (SELECT uid FROM user_list WHERE uid='".$uid."')";
+
     $conn=$dbConn->connect();
     if ($conn) {
         echo"qqqqqqq";
@@ -33,23 +20,11 @@ function login($user,$pass){
         if ($ex=$conn->query($sql)) {
             unset($dbConn);
             $result=mysqli_fetch_assoc($ex);
-            print_r($result);
-            $password=$result['password'];
-            echo'<br>';
-            print($pass);
-            echo'<br>';
-            print($password);
-            print(strcmp($pass,$password));
-
-            if ($pass==$password) {
-                echo"kkkkkkkk";
-                session_start();
-                $_SESSION['user']=$user;
-                header("Location:Home.php");
+            session_start();
+            $_SESSION['user']=$uid;
+            header("Location:Home.php?uid=".$uid."");
                 
-            } else {
-                header("Location:index.php?err");
-            }
+            
             
             
         } else {

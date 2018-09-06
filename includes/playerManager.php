@@ -183,7 +183,8 @@
         }
 
         public function markUserVote($user,$player_id,$time){
-            $sql="INSERT INTO `user_list`(`username`, `voted_player`, `voted_time`) VALUES ('".$user."','".$player_id."','".$time."')";
+            $sql = "UPDATE `user_list` SET `voted_player`='".$player_id."',`voted_time`='".$time."' WHERE uid='".$user."'";
+            
             $conn=$this->connect();
             $r;
             if ($conn) {
@@ -213,7 +214,7 @@
 
         
         public function getUserVotedPlayer($user){
-            $sql ="SELECT * FROM `user_list` WHERE `username`= '$user' ";
+            $sql ="SELECT `voted_player` FROM `user_list` WHERE `uid`= '$user' ";
             $conn=$this->connect();
             $r;
             if ($conn) {
@@ -278,7 +279,7 @@
         }
 
         public function updateUserVote($user,$id,$time){
-            $sql="UPDATE `user_list` SET `voted_player`='$id',`voted_time`='$time' WHERE `username`='$user'";
+            $sql="UPDATE `user_list` SET `voted_player`='$id',`voted_time`='$time' WHERE `uid`='$user'";
             $conn=$this->connect();
             $r;
             if ($conn) {

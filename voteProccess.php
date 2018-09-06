@@ -15,7 +15,7 @@
 
 	echo"11111111111111111111<br>";
 
-    print_r($pl->getPlayers());
+    //print_r($pl->getPlayers());
     
     if (isset($_POST)) {
         $id=$_GET['id'];
@@ -26,7 +26,7 @@
         $time=$t->setTimezone(new DateTimeZone('Asia/Colombo'));
         $time_str=date_format($time,"Y/m/d H:i:s");
         
-        print(date_format($time,"Y/m/d H:i:s"));
+        //print(date_format($time,"Y/m/d H:i:s"));
         if ($voted=='0') {
             $r2=$pl->addVote($id);
             $r1='0';
@@ -46,6 +46,7 @@
             print($r2);
             print($rr);
             $pg='pg_un';
+            echo"UPDATE `user_list` SET `voted_player`='".$player_id."',`voted_time`='".$time."' WHERE uid='".$user."'";
         }
 
         header("Location:voteFeedback.php?pg={$pg}");

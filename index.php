@@ -1,63 +1,117 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lumino - Login</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/datepicker3.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
-	<!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+    
+ 
+  <title></title>
 </head>
 <body>
-	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-			<div class="login-panel panel panel-default">
-				<div class="panel-heading">Log in</div>
-				<div class="panel-body">
-					<form name="Admin-login" method="POST" action="index-proccess.php">
-						<fieldset>
-							<div class="form-group">
-								<input class="form-control" placeholder="Username" name="Username" type="text" autofocus="">
-							</div>
-							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="password" type="password" value="">
-							</div>
-							<div class="checkbox">
-								<label>
-									<input name="remember" type="checkbox" value="Remember Me">Remember Me
-								</label>
-                            </div>
-                            <div><h4 style='color:red;' >
-                                <?php
-                                
-                                    if (!$_GET==null) {
-                                        echo "Username or Password Incorrect!!";
-                                    } else {
-                                        # code...
-                                    }
-                                    
-                                
-                                ?>
+    
+    <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBAlhI2GtuIc9-00t1AslTVL2iJ_lFQJVc",
+    authDomain: "msp-vote-fb-login.firebaseapp.com",
+    databaseURL: "https://msp-vote-fb-login.firebaseio.com",
+    projectId: "msp-vote-fb-login",
+    storageBucket: "msp-vote-fb-login.appspot.com",
+    messagingSenderId: "613251121623"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<script>
+   window.fbAsyncInit = function() {
+      FB.init ({
+         appId      : '259394757992098',
+         xfbml      : true,
+         version    : 'v2.6'
+      });
+   };
+
+   (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+   } (document, 'script', 'facebook-jssdk'));
+  
+</script>
+
+
+<script>
+var provider = new firebase.auth.FacebookAuthProvider();
+
+function facebookSignin() {
+   firebase.auth().signInWithPopup(provider)
+   
+   .then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+    
+      console.log(token)
+      console.log("111111111111111111")
+      console.log(user)
+      console.log("```````````````````````````````````")
+      console.log(user.uid)
+      console.log("`````````````````````````````````")
+      if(user.uid!=null){
+    console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqq')
+    
+    window.location.href = "index-proccess.php?uid="+user.uid;
+    console.log('qqqqqqqqqqqqqqqqqqqq')
+}
+   }).catch(function(error) {
+      console.log(error.code);
+      console.log(error.message);
+   });
+   
+   
+
+   
+}
+
+function facebookSignout() {
+   firebase.auth().signOut()
+   
+   .then(function() {
+      console.log('Signout successful!')
+   }, function(error) {
+      console.log('Signout failed')
+   });
+}
+
+</script>
+<script>
+var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
+
+if (user != null) {
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                   // this value to authenticate with your backend server, if
+                   // you have one. Use User.getToken() instead.
+ 
+}
+
+console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 
 
-                            </h4></div>
-							<button class="btn btn-primary" type="submit">Login</button>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div><!-- /.col-->
-	</div><!-- /.row -->	
-	
+console.log(user);
+</script>
 
-<script src="../js/jquery-1.11.1.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
+<button onclick = "facebookSignin()">Facebook Signin</button>
+<button onclick = "facebookSignout()">Facebook Signout</button>
 </body>
 </html>
- 
