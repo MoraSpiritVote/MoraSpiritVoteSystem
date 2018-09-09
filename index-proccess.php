@@ -1,5 +1,5 @@
 <?php
-
+    ob_start();
     include_once 'includes/dbConnection.php';
 
 print_r($_POST);
@@ -11,9 +11,10 @@ login($uid);
 
 function login($uid){
     $dbConn = new dbConnection();
-    $sql="INSERT INTO user_list (uid,voted_player, voted_time) SELECT '".$uid."','','' FROM DUAL WHERE NOT EXISTS (SELECT uid FROM user_list WHERE uid='".$uid."')";
+    $sql="INSERT IGNORE INTO user_list (uid,voted_player, voted_time) VALUES ('".$uid."','','')";
 
     $conn=$dbConn->connect();
+    echo"INSERT IGNORE INTO user_list (uid,voted_player, voted_time) VALUES ('".$uid."','','')";
     if ($conn) {
         echo"qqqqqqq";
         

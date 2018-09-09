@@ -54,6 +54,7 @@ class frontPage extends dbConnection{
                 
                 
             } else {
+                echo"1111111111111111";
                 die('query not executed!!!');
             }
             

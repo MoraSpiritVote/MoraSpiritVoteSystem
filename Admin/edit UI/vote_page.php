@@ -4,7 +4,7 @@
 
 session_start();
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['user']) && !empty($_SESSION['user']) ) {
 
 	$user=$_SESSION['user'];
 }else{
@@ -22,7 +22,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
     logout();
 }
 function logout()
-{
+{  
 
     unset($_SESSION['user']);
     header("Location:../login.php");

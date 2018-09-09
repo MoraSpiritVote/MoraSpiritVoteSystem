@@ -13,6 +13,7 @@
 	$_SESSION['object']=$fr;
 	$pl=new playerManager();
 	$_SESSION['pl_object']=$pl;
+	print_r($_SESSION);
 
 	
 
