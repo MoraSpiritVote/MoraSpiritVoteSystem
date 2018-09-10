@@ -15,16 +15,6 @@
         echo "\"document.getElementById('e1').style.display='block'\"";
     }
 
-
-
-
-
-
-
-
-
-
-
 ?>>
 
 

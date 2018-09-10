@@ -24,29 +24,17 @@ function login($uid){
             session_start();
             $_SESSION['user']=$uid;
             header("Location:Home.php?uid=".$uid."");
-                
-            
-            
+                  
             
         } else {
             die('query not executed!!!');
         }
         
         
-        
-        
     } else {
         die('Connection Failed!!!');
     }
-    
-   
 
 }
-
-
-
-
-
-
 
 ?>

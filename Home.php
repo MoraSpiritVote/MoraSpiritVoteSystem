@@ -13,14 +13,9 @@
 	$_SESSION['object']=$fr;
 	$pl=new playerManager();
 	$_SESSION['pl_object']=$pl;
-	print_r($_SESSION);
+	//print_r($_SESSION);
 
-	
 
-	
-
-	
-	
 
 
 ?>
@@ -35,7 +30,7 @@
 		<!-- Always force latest IE rendering engine or request Chrome Frame -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<!-- Page Title -->
-        <title>Mora Spirit Vote</title>		
+        <title>MoraSpirit Vote</title>		
 		<!-- Meta Description -->
         <meta name="description" content="Blue One Page Creative HTML5 Template">
         <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
@@ -73,10 +68,6 @@
     </head>
 	
     <body id="body">
-
-	
-    	
-
 	
 		<!-- preloader -->
 		
@@ -112,8 +103,8 @@
 					
 					<ul id="nav" class="nav navbar-nav">
                         <li class="current"><a href="#body">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#works">Work</a></li>
+                        <li><a href="#facts">Top Popular</a></li>
+                        <li><a href="#works">Vote</a></li>
                         <li><a href="#team">Team</a></li>
                         <li><a href="http://google.com">Contact</a></li>
                     </ul>
@@ -202,7 +193,69 @@
 		
         <!--
         Some fun facts
-        ==================================== -->		
+        ==================================== -->	
+
+
+
+
+<style>
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+</style>
+</head>
+<body>
+
+<button onclick="myFunction()">Show Snackbar</button>
+
+<div id="snackbar">Some text some message..</div>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+</script>
+
 		
 		<section id="facts" class="facts">
 			<div class="parallax-overlay">
@@ -210,7 +263,7 @@
 					<div class="row number-counters">
 						
 						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
-							<h2>Some Fun Facts</h2>
+							<h2>Top 3 Popular Players</h2>
 							<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
 						</div>
 
@@ -337,8 +390,8 @@
 
 							}else{
 								$voted='1';
-								print_r($p);
-								echo"------------------------";
+								//print_r($p);
+								//echo"------------------------";
 							$p_id=$p['voted_player'];
 							$voted_id=$p_id;
 							$info=$pl->getSpecificPlayer($p_id);
