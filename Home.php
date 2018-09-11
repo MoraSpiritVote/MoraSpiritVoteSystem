@@ -14,10 +14,6 @@
 	$pl=new playerManager();
 	$_SESSION['pl_object']=$pl;
 	//print_r($_SESSION);
-
-
-
-
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -67,7 +63,31 @@
 
     </head>
 	
-    <body id="body">
+<script>
+function votingpg_s() {
+    var x = document.getElementById('votealert');
+    x.innerHTML = 'Voted Successfully...!';
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4500);
+}
+function votingpg_un() {
+    var x = document.getElementById('votealertx');
+    x.innerHTML = 'Voted Unsuccessfully...! Try Later.';
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4500);
+}
+</script>
+
+    <body id="body" 
+		<?php
+		    if ($_GET['pg']=='pg_s') {
+		        echo "onload='votingpg_s()'";
+		    }elseif ($_GET['pg']=='pg_un') {
+		        echo "onload='votingpg_un()'";
+		    }else{
+
+		    }
+		?>>
 	
 		<!-- preloader -->
 		
@@ -80,14 +100,14 @@
             <div class="container">
                 <div class="navbar-header" style="height:30px;">
                     <!-- responsive nav button -->
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-bars fa-2x"></i>
                     </button>
 					<!-- /responsive nav button -->
 					
 					<!-- logo -->
-                    <a class="navbar-brand" href="#body">
+                  <a class="navbar-brand" href="#body">
 						<h1 id="logo">
 							<img style="margin-left:10px;" src="img/moraspirit_logo.png" alt="Brandi">
 						</h1>
@@ -103,10 +123,10 @@
 					
 					<ul id="nav" class="nav navbar-nav">
                         <li class="current"><a href="#body">Home</a></li>
-                        <li><a href="#facts">Top Popular</a></li>
+                        <!--<li><a href="#facts">Top Popular</a></li>-->
                         <li><a href="#works">Vote</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="http://google.com">Contact</a></li>
+                        <!--<li><a href="#team">Team</a></li>-->
+                        <li><a href="#footer">Contact</a></li>
                     </ul>
                 </nav>
 				<!-- /main nav -->
@@ -123,24 +143,24 @@
         Home Slider
         ==================================== -->
 		
-		<section id="slider">
+	<!--	<section id="slider">
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			
 				<!-- Indicators bullet -->
-				<ol class="carousel-indicators">
+	<!--			<ol class="carousel-indicators">
 					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 				</ol>
 				<!-- End Indicators bullet -->				
 				
 				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
+	<!--			<div class="carousel-inner" role="listbox">
 					
 					<!-- single slide -->
-					<div class="item active" style="background-image: url(img/<?php print($fr->getSlideImage1()) ?>);">
+	<!--				<div class="item active" style="background-image: url(img/<?php //print($fr->getSlideImage1()) ?>);">
 						<div class="carousel-caption">
-							<h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php print($fr->getmainQuoteInImage1())    ?></span>!</h2>
-							<h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color"><?php print($fr->getsmallQuoteInImage1())?></span></h3>
+							<h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php //print($fr->getmainQuoteInImage1())    ?></span>!</h2>
+							<h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color"><?php //print($fr->getsmallQuoteInImage1())?></span></h3>
 							<p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>
 							
 							<ul class="social-links text-center">
@@ -154,10 +174,10 @@
 					<!-- end single slide -->
 					
 					<!-- single slide -->
-					<div class="item" style="background-image: url(img/<?php print($fr->getSlideImage2()) ?>);">
+	<!--				<div class="item" style="background-image: url(img/<?php //print($fr->getSlideImage2()) ?>);">
 						<div class="carousel-caption">
-							<h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php print($fr->getmainQuoteInImage2())    ?></span>!</h2>
-							<h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color"><?php print($fr->getsmallQuoteInImage2())?></span></h3>
+							<h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php //print($fr->getmainQuoteInImage2())    ?></span>!</h2>
+							<h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color"><?php //print($fr->getsmallQuoteInImage2())?></span></h3>
 							<p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
 							
 							<ul class="social-links text-center">
@@ -170,10 +190,10 @@
 					</div>
 					<!-- end single slide -->
 					
-				</div>
+		<!--		</div>
 				<!-- End Wrapper for slides -->
 				
-			</div>
+	<!--		</div>
 		</section>
 		
         <!--
@@ -193,70 +213,13 @@
 		
         <!--
         Some fun facts
-        ==================================== -->	
+        ==================================== -->
 
 
+<div id='votealert'></div>
+<div id='votealertx'></div>
 
 
-<style>
-#snackbar {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    font-size: 17px;
-}
-
-#snackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-}
-</style>
-</head>
-<body>
-
-<button onclick="myFunction()">Show Snackbar</button>
-
-<div id="snackbar">Some text some message..</div>
-
-<script>
-function myFunction() {
-    var x = document.getElementById("snackbar");
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
-</script>
-
-		
 		<section id="facts" class="facts">
 			<div class="parallax-overlay">
 				<div class="container">
@@ -311,7 +274,7 @@ function myFunction() {
 							echo'
 							<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" style="margin-left:30px;">
 							<div class="counters-item">
-							<img src="img/players/'.$image.'" style="border-radius:2000px;" alt="" width="300px" height="300px">
+							<img src="img/players/'.$image.'" style="border-radius:2000px;" alt="" width="400px" height="300px">
 								<strong data-to="'.$votes.'">0</strong>
 								<!-- Set Your Number here. i,e. data-to="56" -->
 								<p>'.$player.'</p>
@@ -321,27 +284,9 @@ function myFunction() {
 							
 							
 							';
-						
-
-
-
 						}
-						
-			
-						
-						
-						
-						
-						
 						?>
-						
-						
-						
-						
 						?>
-						
-						
-				
 					</div>
 				</div>
 			</div>
@@ -429,21 +374,11 @@ function myFunction() {
 						';
 
 							}
-					
-							
-							
-							
-
-
-							
 							
 						}else{
 
 							print($user);
-							echo"3333333";
 						}
-						
-						
 						
 						
 						?>
@@ -557,130 +492,21 @@ function myFunction() {
 				
 			</div>
 							
-							
-							
+														
 							';
-
-
 
 							}
 							
-				
-							
-							
-							
-							
-							
 							?>
-			
-				
-					
-					
-				
-				
-				
-				
-				
-				
-				
 				
 			</div>
 
-			
-
-			
-		
-
 		</section>
-		
-        <!--
-        End Our Works
-        ==================================== -->
-		
-		
-		<!--
-        Contact Us
-        ==================================== -->		
-		
-		<section id="contact" class="contact">
-			<div class="container">
-				<div class="row mb50">
-				
-					<div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-						<h2>Let’s Discuss</h2>
-						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-					</div>
-					
-					<div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
-						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
-					</div>
-					
-					<!-- contact address -->
-					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 wow fadeInLeft animated" data-wow-duration="500ms">
-						<div class="contact-address">
-							<h3>Cras at ultrices erat, sed vulputate!</h3>
-							<p>2345 Setwant natrer, 1234,</p>
-							<p>Washington. United States.</p>
-							<p>(401) 1234 567</p>
-						</div>
-					</div>
-					<!-- end contact address -->
-					
-					<!-- contact form -->
-					<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="300ms">
-						<div class="contact-form">
-							<h3>Say hello!</h3>
-							<form action="#" id="contact-form">
-								<div class="input-group name-email">
-									<div class="input-field">
-										<input type="text" name="name" id="name" placeholder="Name" class="form-control">
-									</div>
-									<div class="input-field">
-										<input type="email" name="email" id="email" placeholder="Email" class="form-control">
-									</div>
-								</div>
-								<div class="input-group">
-									<textarea name="message" id="message" placeholder="Message" class="form-control"></textarea>
-								</div>
-								<div class="input-group">
-									<input type="submit" id="form-submit" class="pull-right" value="Send message">
-								</div>
-							</form>
-						</div>
-					</div>
-					<!-- end contact form -->
-					
-					<!-- footer social links -->
-					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 wow fadeInRight animated" data-wow-duration="500ms" data-wow-delay="600ms">
-						<ul class="footer-social">
-							<li><a href="https://www.behance.net/Themefisher"><i class="fa fa-behance fa-2x"></i></a></li>
-							<li><a href="https://www.twitter.com/Themefisher"><i class="fa fa-twitter fa-2x"></i></a></li>
-							<li><a href="https://dribbble.com/themefisher"><i class="fa fa-dribbble fa-2x"></i></a></li>
-							<li><a href="https://www.facebook.com/Themefisher"><i class="fa fa-facebook fa-2x"></i></a></li>
-						</ul>
-					</div>
-					<!-- end footer social links -->
-					
-				</div>
-			</div>
-			
-		
-			
-		</section>
-		
-        <!--
-        End Contact Us
-        ==================================== -->
 		
 		
 		<footer id="footer" class="footer">
 			<div class="container">
-				<div class="row">
-				
-					
-				
-					
-				
+				<div class="row">			
 					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
 						<div class="footer-single">
 							<h6>Explore</h6>
@@ -704,8 +530,6 @@ function myFunction() {
 							</ul>
 						</div>
 					</div>
-
-					
 					
 				</div>
 				<div class="row">

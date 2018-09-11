@@ -41,6 +41,7 @@
 
         if ($r1=='0' and $r2=='0'and $rr=='0') {
             $pg='pg_s';
+
         }else{
             print($r1);
             print($r2);
@@ -49,7 +50,7 @@
             echo"UPDATE `user_list` SET `voted_player`='".$player_id."',`voted_time`='".$time."' WHERE uid='".$user."'";
         }
 
-        header("Location:voteFeedback.php?pg={$pg}");
+        header("Location:Home.php?pg={$pg}");
     }
 	
 

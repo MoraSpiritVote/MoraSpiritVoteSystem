@@ -7,7 +7,7 @@ body {
     background-color: #fff;
     font-family: 'Open Sans', sans-serif;
     line-height: 21px;
-	font-size: 13px;
+	  font-size: 13px;
     color: #6a737b;
 }
 
@@ -41,7 +41,7 @@ a, a:focus, a:hover {
 }
 
 a:focus, a:hover {
-    color: #6CB670;
+    color: #bf4242;    /*dark red*/
 }
 
 h1, h2, h3,
@@ -65,7 +65,7 @@ h4, h5, h6 {
 }
 
 span.color {
-	color: #0feb9e;
+	color: #e81e1e;  /*light red*/
 }
 
 body > section,
@@ -76,7 +76,7 @@ body > section,
 .sec-title {}
 
 .sec-title h2 {
-  color: #0eb493;
+  color: #bf0f0f;  /*light red 2*/
   font-size: 28px;
   font-weight: 800;
   text-transform: uppercase;
@@ -168,7 +168,7 @@ body > section,
 .navbar-nav li a:focus,
 .navbar-nav li a:hover {
 	background-color: transparent;
-	border-top: 1px solid #32B0EE;
+	border-top: 1px solid #bf0505;    /*light red 3*/
 	color: #fff;
 }
 
@@ -214,7 +214,7 @@ body > section,
 
 .carousel-caption p:before,
 .carousel-caption p:after {
-color: #0feb9e;
+color: #ea0b0b;   /*light red 4*/
 content: "___";
 position: relative;
 top: -8px;
@@ -302,9 +302,9 @@ top: -8px;
 }
 
 .service-icon {
-  border: 1px solid #0eb493;
+  border: 1px solid #c60505;   /*dark red 5*/
   border-radius: 50%;
-  color: #0eb493;
+  color: #c60505;       /*dark red 5*/
   float: left;
   padding: 10px 13px;
 }
@@ -349,7 +349,7 @@ top: -8px;
 
 .work-filter ul li a:hover,
 .work-filter ul li a.active {
-  background-color: #0eb493;
+  background-color: #d30e0e;   /*light red 6*/
   border-radius: 6px;
   color: #fff;
   padding: 5px 17px;
@@ -476,7 +476,7 @@ top: -8px;
 }
 
 .team-member:hover h4 {
-  color: #0eb493;
+  color: #d30e0e;    /*light red 5*/
 }
 
 .team-member .social-links {
@@ -484,7 +484,7 @@ top: -8px;
 }
 
 .team-member .social-links li a {
-  background-color: #0d7c67;
+  background-color: #a00b0b;   /*dark red 6*/
   color: #fff;
   height: 42px;
   padding: 10px 0 0;
@@ -646,7 +646,7 @@ label.error {
 
 
 .footer {
-  background-color: #1ea78d;
+  background-color: #ba1d1d;  /*dark red 6*/
   border-top: 5px solid #062033;
   color: #fff;
 }

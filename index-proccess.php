@@ -23,7 +23,7 @@ function login($uid){
             $result=mysqli_fetch_assoc($ex);
             session_start();
             $_SESSION['user']=$uid;
-            header("Location:Home.php?uid=".$uid."");
+            header("Location:Home.php?uid=".$uid."&pg=''");
                   
             
         } else {
