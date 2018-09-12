@@ -46,6 +46,12 @@ if (isset($_POST)) {
         $Image_tmpname=$_FILES['image']['tmp_name'];
         $Image_size=$_FILES['image']['size'];
 
+        $v1 = rand(1111,9999);
+        $v2 = rand(1111,9999);
+        $v3 = $v1.$v2;
+        $v3 = md5($v3);
+        $Image_name=$v3.$Image_name;
+
         $file_upload_to="../img/players/";
 
         if ($Image_type=="") {
