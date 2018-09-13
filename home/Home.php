@@ -26,7 +26,7 @@
 		<!-- Always force latest IE rendering engine or request Chrome Frame -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<!-- Page Title -->
-        <title>MoraSpirit Vote</title>		
+        <title>MoraSpirit | Vote</title>		
 		<!-- Meta Description -->
         <meta name="description" content="Blue One Page Creative HTML5 Template">
         <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
@@ -88,10 +88,6 @@ function votingpg_un() {
 
 		    }
 		?>>
-	
-		<!-- preloader -->
-		
-		<!-- end preloader -->
 
         <!-- 
         Fixed Navigation
@@ -135,84 +131,6 @@ function votingpg_un() {
         </header>
         <!--
         End Fixed Navigation
-        ==================================== -->
-		
-		
-		
-        <!--
-        Home Slider
-        ==================================== -->
-		
-	<!--	<section id="slider">
-			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-			
-				<!-- Indicators bullet -->
-	<!--			<ol class="carousel-indicators">
-					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				</ol>
-				<!-- End Indicators bullet -->				
-				
-				<!-- Wrapper for slides -->
-	<!--			<div class="carousel-inner" role="listbox">
-					
-					<!-- single slide -->
-	<!--				<div class="item active" style="background-image: url(img/<?php //print($fr->getSlideImage1()) ?>);">
-						<div class="carousel-caption">
-							<h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php //print($fr->getmainQuoteInImage1())    ?></span>!</h2>
-							<h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color"><?php //print($fr->getsmallQuoteInImage1())?></span></h3>
-							<p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>
-							
-							<ul class="social-links text-center">
-								<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-								<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-								<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-								<li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- end single slide -->
-					
-					<!-- single slide -->
-	<!--				<div class="item" style="background-image: url(img/<?php //print($fr->getSlideImage2()) ?>);">
-						<div class="carousel-caption">
-							<h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span><?php //print($fr->getmainQuoteInImage2())    ?></span>!</h2>
-							<h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color"><?php //print($fr->getsmallQuoteInImage2())?></span></h3>
-							<p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
-							
-							<ul class="social-links text-center">
-								<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-								<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-								<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-								<li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- end single slide -->
-					
-		<!--		</div>
-				<!-- End Wrapper for slides -->
-				
-	<!--		</div>
-		</section>
-		
-        <!--
-        End Home SliderEnd
-        ==================================== -->
-		
-        <!--
-        Features
-        ==================================== -->
-		
-		
-		
-        <!--
-        End Features
-        ==================================== -->
-		
-		
-        <!--
-        Some fun facts
         ==================================== -->
 
 
@@ -267,9 +185,6 @@ function votingpg_un() {
 							}else {
 								$img=$image;
 							}
-
-							
-
 							
 							echo'
 							<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" style="margin-left:30px;">
