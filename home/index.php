@@ -105,7 +105,7 @@ function votingpg_un() {
 					<!-- logo -->
                   <a class="navbar-brand" href="#body">
 						<h1 id="logo">
-							<img style="margin-left:10px;" src="img/moraspirit_logo.png" alt="Brandi">
+							<img style="height: 5rem; width: 5rem;" src="img/moraspirit_logo.png" alt="MoraSpirit">
 						</h1>
 						
 					</a>

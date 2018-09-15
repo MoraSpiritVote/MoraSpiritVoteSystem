@@ -50,7 +50,7 @@
             echo"UPDATE `user_list` SET `voted_player`='".$player_id."',`voted_time`='".$time."' WHERE uid='".$user."'";
         }
 
-        header("Location:Home.php?pg={$pg}");
+        header("Location:index.php?pg={$pg}");
     }
 	
 
