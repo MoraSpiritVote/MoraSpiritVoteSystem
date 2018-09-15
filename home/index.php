@@ -60,6 +60,25 @@
 		<!-- Modernizer Script for old Browsers -->
         <script src="js/modernizr-2.6.2.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <link rel="stylesheet" href="css/base.css">
+	    <link rel="stylesheet" href="css/vendor.css">
+	    <link rel="stylesheet" href="css/main.css">
+
+	    <!-- script
+	    ================================================== -->
+	    <script src="js/modernizr.js"></script>
+	    <script src="js/pace.min.js"></script>
+
+	    <!-- favicons
+	    ================================================== -->
+	    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+	    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+	    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+	    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+	    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
 
     </head>
 	
@@ -89,21 +108,57 @@ function votingpg_un() {
 		    }
 		?>>
 
+
+<header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="index.html">
+                <img src="../images/logo.png" alt="MoraSpirit">
+            </a>
+        </div>
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+                <h3>Navigation</h3>
+                
+                <ul class="header-nav__list">
+                    <li class="current"><a class="smoothscroll"  href="#body" title="home">Home</a></li>
+                    <li><a class="smoothscroll"  href="#works" title="works">Vote</a></li>
+                    <li><a class="smoothscroll"  href="#footer" title="contact">Contact</a></li>
+                </ul>
+    
+                <p>Moraspirit | 2018 <a href='#0'> c </a> All right reserved.</p>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav>  <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+
+
         <!-- 
         Fixed Navigation
         ==================================== -->
-        <header id="navigation" class="navbar-fixed-top navbar">
+ <!--       <header id="navigation" class="navbar-fixed-top navbar">
             <div class="container">
                 <div class="navbar-header" style="height:30px;">
                     <!-- responsive nav button -->
-			       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<!--		       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-bars fa-2x"></i>
                     </button>
 					<!-- /responsive nav button -->
 					
 					<!-- logo -->
-                  <a class="navbar-brand" href="#body">
+   <!--               <a class="navbar-brand" href="#body">
 						<h1 id="logo">
 							<img style="height: 5rem; width: 5rem;" src="img/moraspirit_logo.png" alt="MoraSpirit">
 						</h1>
@@ -111,23 +166,23 @@ function votingpg_un() {
 					</a>
 					<!-- /logo -->
 					
-				</div>
+<!--				</div>
 				
 
 				<!-- main nav -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+   <!--             <nav class="collapse navbar-collapse navbar-right" role="navigation">
 					
 					<ul id="nav" class="nav navbar-nav">
                         <li class="current"><a href="#body">Home</a></li>
                         <!--<li><a href="#facts">Top Popular</a></li>-->
-                        <li><a href="#works">Vote</a></li>
+   <!--                     <li><a href="#works">Vote</a></li>
                         <!--<li><a href="#team">Team</a></li>-->
-                        <li><a href="#footer">Contact</a></li>
+  <!--                      <li><a href="#footer">Contact</a></li>
                     </ul>
                 </nav>
 				<!-- /main nav -->
 				
-            </div>
+   <!--         </div>
         </header>
         <!--
         End Fixed Navigation
