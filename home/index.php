@@ -28,14 +28,13 @@
 		<!-- Page Title -->
         <title>MoraSpirit | Vote</title>		
 		<!-- Meta Description -->
-        <meta name="description" content="Blue One Page Creative HTML5 Template">
-        <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
-        <meta name="author" content="Muhammad Morshed">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
 		<!-- Mobile Specific Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<!-- Google Font -->
-		
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
 		<!-- CSS
@@ -61,6 +60,11 @@
         <script src="js/modernizr-2.6.2.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
         <link rel="stylesheet" href="css/base.css">
+	    <link rel="stylesheet" href="css/vendor.css">
+
+	    <!-- CSS
+	    ================================================== -->
+	    <link rel="stylesheet" href="css/base.css">
 	    <link rel="stylesheet" href="css/vendor.css">
 	    <link rel="stylesheet" href="css/main.css">
 
@@ -244,18 +248,13 @@ function votingpg_un() {
 							echo'
 							<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" style="margin-left:30px;">
 							<div class="counters-item">
-							<img src="img/players/'.$image.'" style="border-radius:2000px;" alt="" width="400px" height="300px">
+							<img src="img/players/'.$image.'" style="border-radius:25%;" alt="" width="300px" height="300px">
 								<strong data-to="'.$votes.'">0</strong>
 								<!-- Set Your Number here. i,e. data-to="56" -->
 								<p>'.$player.'</p>
 							</div>
 							</div>
-							
-							
-							
-							';
-						}
-						?>
+							';}
 						?>
 					</div>
 				</div>
@@ -266,10 +265,6 @@ function votingpg_un() {
         End Some fun facts
         ==================================== -->
 
-
-
-
-
 		<!--
         Our Works
         ==================================== -->
@@ -278,23 +273,7 @@ function votingpg_un() {
 			<div class="container">
 				<div class="row" style="align-content: center";>
 
-					
-				
-					<div class="sec-title text-center">
-						<h2>Vote For Your Player</h2>
-						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-					</div>
-
-						
-					
-					<div class="sec-sub-title text-center">
-						<p>Now you can vote for your favourite player </p>
-						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-					</div>
-					
 					<div class="project-wrapper" style="margin-left:30%;" >
-
-						
 						<?php
 
 						$voted='0';
@@ -302,7 +281,10 @@ function votingpg_un() {
 						if ($p=$pl->getUserVotedPlayer($user)) {
 
 							if($p['voted_player'] ==''){
-
+								echo '<div class="sec-title text-center">
+						<h2>Vote For Your Player</h2>
+			<!--		<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
+					</div>';
 							}else{
 								$voted='1';
 								//print_r($p);
@@ -316,9 +298,8 @@ function votingpg_un() {
 							$p_image=$info['image'];
 							$p_vote=$info['number_of_votes'];
 							
-
-							echo'
-							<h3 class="sec-sub-title" style="font-weight: 900;color:#0eb493;font-size:30px;" >Player that You have Voted</h3>
+							echo '
+							<h3 class="sec-sub-title" style="font-weight: 900;color:#bf0f0f;font-size:30px;" >Your Voted Player</h3>
 							<br>
 							<div class="project-wrapper">
 							<figure class="mix work-item" style="width:50%">
@@ -334,28 +315,36 @@ function votingpg_un() {
 						
 							<p>Number of Votes:'.$p_vote.'</p>
 							
-							
 							</span>
 							
 						</figure>
 						</div>
 						<br>
 						<br>
-						';
-
-							}
+						';}
 							
 						}else{
 
 							print($user);
 						}
-						
-						
+
 						?>
 						
 						</div>
+					<br>
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+					<div class="sec-title text-center">
+						<h2>Vote For Your Player</h2>
+			<!--		<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
+					</div>
+
 						
 					
+					<div class="sec-sub-title text-center">
+						<p>Now you can vote for your favourite player </p>
+			<!--			<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
+					</div>
 					
 				</div>
 			</div>
