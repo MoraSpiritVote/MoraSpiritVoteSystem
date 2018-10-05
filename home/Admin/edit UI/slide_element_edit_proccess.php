@@ -9,7 +9,7 @@ if (isset($_SESSION['user'])) {
 	$user=$_SESSION['user'];
 }else{
 	echo"eeeeeeeeeeeee";
-	header("Location:../login.php");
+	header("Location:../index.php");
 }
 if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
     
@@ -19,7 +19,7 @@ function logout()
 {
 
     unset($_SESSION['user']);
-    header("Location:../login.php");
+    header("Location:../index.php");
     exit;
 }
 

@@ -146,7 +146,7 @@ if (user != null) {
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="index.html">
+            <a class="site-logo" href="index.php">
                 <img src="images/logo.png" alt="Homepage">
             </a>
         </div>
@@ -160,11 +160,11 @@ if (user != null) {
                 
                 <ul class="header-nav__list">
                     <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
-                    <li><a class="smoothscroll"  href="#works" title="works">View Result</a></li>
+                    <li><a class="smoothscroll"  href="#results" title="results">View Result</a></li>
                     <li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li>
                 </ul>
     
-                <p>Moraspirit | 2018 <a href='#0'> c </a> All right reserved.</p>
+                <p>&copy Moraspirit | 2018<br> All right reserved.</p>
 
             </div> <!-- end header-nav__content -->
 
@@ -201,7 +201,7 @@ if (user != null) {
                 <div class="home-content__buttons">
                     <button onclick = "facebookSignin()" class="smoothscroll btn btn--stroke">Vote</button>
                     
-                    <a href="#works" class="smoothscroll btn btn--stroke">
+                    <a href="#results" class="smoothscroll btn btn--stroke">
                         View Results
                     </a>
                 </div>
@@ -285,7 +285,7 @@ if (user != null) {
 
     <!-- works
     ================================================== -->
-    <section id='works' class="s-works">
+    <section id='results' class="s-works">
         <div class="intro-wrap">
                 
             <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
