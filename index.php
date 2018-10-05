@@ -294,7 +294,7 @@ if (user != null) {
                     <h1 class="display-2 display-2--light">Top 5 Popular Players</h1>
                 </div>
             </div> <!-- end section-header -->
-
+            <div class="row">
             <?php
                             $players=$pl->getPlayers();
                             
@@ -331,22 +331,22 @@ if (user != null) {
                                     $img=$image;
                                 }
                             echo '
-                            <div class="intro-wrap">
-                            <div class="card" data-aos="fade-up">
-              <img src="home/img/players/'.$img.'" alt="Player Image" style="width:100%">
-              <h1>'.$player.'</h1>
-              <p class="title">'.$uni.'</p>
-              <p class="title">'.$sport.'</p>
-              <p class="title">'.$votes.' Votes</p>
-            </div>
-            </div>
+                                <div class="column">
+                                    <div class="card" data-aos="fade-up">
+                                        <img src="home/img/players/'.$img.'" alt="Player Image" style="width:100%">
+                                        <div class="container">
+                                          <h1>'.$player.'</h1>
+                                          <p class="title">'.$uni.'</p>
+                                          <p class="title">'.$sport.'</p>
+                                          <p class="title">'.$votes.' Votes</p>
+                                        </div>
+                                    </div>
+                                </div>
+
     ';}
     ?>      
-
+            </div>
         </div> <!-- end intro-wrap -->
-
-
-
    <!--<div class="row works-content">
         </div> <!-- end works-content -->
 
