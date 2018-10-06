@@ -338,7 +338,7 @@ if (user != null) {
                                           <h1>'.$player.'</h1>
                                           <p class="title">'.$uni.'</p>
                                           <p class="title">'.$sport.'</p>
-                                          <p class="title">'.$votes.' Votes</p>
+                                          <p class="title2">'.$votes.' Votes</p>
                                         </div>
                                     </div>
                                 </div>

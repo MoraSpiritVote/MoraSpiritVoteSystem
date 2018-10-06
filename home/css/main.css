@@ -360,7 +360,7 @@ top: -8px;
 
 .work-item {
     float: left;
-    width: 25%;
+    /*width: 25%;*/
     position: relative;
 }
 
