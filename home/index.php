@@ -1,91 +1,92 @@
 <?php
-	
-	session_start();
-	// we've writen this code where we need
-	function __autoload($classname) {
-		$filename = "includes/". $classname .".php";
-		include_once($filename);
-	}
-
+    
+    session_start();
+    // we've writen this code where we need
+    function __autoload($classname) {
+        $filename = "includes/". $classname .".php";
+        include_once($filename);
+    }
    
-	$user=$_SESSION['user'];
-	$fr=new frontPage();
-	$_SESSION['object']=$fr;
-	$pl=new playerManager();
-	$_SESSION['pl_object']=$pl;
-	//print_r($_SESSION);
+    $user=$_SESSION['user'];
+    $fr=new frontPage();
+    $_SESSION['object']=$fr;
+    $pl=new playerManager();
+    $_SESSION['pl_object']=$pl;
+    //print_r($_SESSION);
 ?>
+
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-    <head>
-    	<!-- meta charec set -->
-        <meta charset="utf-8">
-		<!-- Always force latest IE rendering engine or request Chrome Frame -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<!-- Page Title -->
-        <title>MoraSpirit | Vote</title>		
-		<!-- Meta Description -->
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="author" content="">
-		<!-- Mobile Specific Meta -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<!-- Google Font -->
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 
-		<!-- CSS
-		================================================== -->
-		<!-- Fontawesome Icon font -->
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Moraspirit | Voting</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Fontawesome Icon font -->
         <link rel="stylesheet" href="css/font-awesome.min.css">
-		<!-- Twitter Bootstrap css -->
+        <!-- Twitter Bootstrap css -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
-		<!-- jquery.fancybox  -->
+        <!-- jquery.fancybox  -->
         <link rel="stylesheet" href="css/jquery.fancybox.css">
-		<!-- animate -->
+        <!-- animate -->
         <link rel="stylesheet" href="css/animate.css">
-		<!-- Main Stylesheet -->
+        <!-- Main Stylesheet -->
         <link rel="stylesheet" href="css/main.css">
-		<!-- media-queries -->
-		<link rel="stylesheet" href="css/media-queries.css">
-		<!-- vote popup page -->
-		<link rel="stylesheet" href="css/vote.css">
-		<!--font style-->
-		<link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet'>
+        <!-- media-queries -->
+        <link rel="stylesheet" href="css/media-queries.css">
+        <!-- vote popup page -->
 
-		<!-- Modernizer Script for old Browsers -->
+        <!--<link rel="stylesheet" href="css/vote.css">
+
+        <!--font style-->
+        <link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet'>
+
+        <!-- Modernizer Script for old Browsers -->
         <script src="js/modernizr-2.6.2.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-        <link rel="stylesheet" href="css/base.css">
-	    <link rel="stylesheet" href="css/vendor.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>    
 
-	    <!-- CSS
-	    ================================================== -->
-	    <link rel="stylesheet" href="css/base.css">
-	    <link rel="stylesheet" href="css/vendor.css">
-	    <link rel="stylesheet" href="css/main.css">
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
 
-	    <!-- script
-	    ================================================== -->
-	    <script src="js/modernizr.js"></script>
-	    <script src="js/pace.min.js"></script>
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
 
-	    <!-- favicons
-	    ================================================== -->
-	    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
-	    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
-	    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-	    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-	    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
-	    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+        <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
 
-    </head>
-	
+</head>
+
 <script>
 function votingpg_s() {
     var x = document.getElementById('votealert');
@@ -101,23 +102,25 @@ function votingpg_un() {
 }
 </script>
 
-    <body id="body" 
-		<?php
-		    if ($_GET['pg']=='pg_s') {
-		        echo "onload='votingpg_s()'";
-		    }elseif ($_GET['pg']=='pg_un') {
-		        echo "onload='votingpg_un()'";
-		    }else{
+<body id="top" 
+    <?php
+            if ($_GET['pg']=='pg_s') {
+                echo "onload='votingpg_s()'";
+            }elseif ($_GET['pg']=='pg_un') {
+                echo "onload='votingpg_un()'";
+            }else{
 
-		    }
-		?>>
+            }
+        ?>>
 
 
-<header class="s-header">
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="index.html">
-                <img src="../images/logo.png" alt="MoraSpirit">
+            <a class="site-logo" href="index.php">
+                <img src="images/logo.png" alt="Homepage">
             </a>
         </div>
 
@@ -129,12 +132,12 @@ function votingpg_un() {
                 <h3>Navigation</h3>
                 
                 <ul class="header-nav__list">
-                    <li class="current"><a class="smoothscroll"  href="#body" title="home">Home</a></li>
-                    <li><a class="smoothscroll"  href="#works" title="works">Vote</a></li>
-                    <li><a class="smoothscroll"  href="#footer" title="contact">Contact</a></li>
+                    <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
+                    <li><a class="smoothscroll"  href="#results" title="results">View Result</a></li>
+                    <li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li>
                 </ul>
     
-                <p>Moraspirit | 2018 <a href='#0'> c </a> All right reserved.</p>
+                <p>&copy Moraspirit | 2018<br> All right reserved.</p>
 
             </div> <!-- end header-nav__content -->
 
@@ -147,458 +150,497 @@ function votingpg_un() {
 
     </header> <!-- end s-header -->
 
-
-        <!-- 
-        Fixed Navigation
-        ==================================== -->
- <!--       <header id="navigation" class="navbar-fixed-top navbar">
-            <div class="container">
-                <div class="navbar-header" style="height:30px;">
-                    <!-- responsive nav button -->
-	<!--		       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-bars fa-2x"></i>
-                    </button>
-					<!-- /responsive nav button -->
-					
-					<!-- logo -->
-   <!--               <a class="navbar-brand" href="#body">
-						<h1 id="logo">
-							<img style="height: 5rem; width: 5rem;" src="img/moraspirit_logo.png" alt="MoraSpirit">
-						</h1>
-						
-					</a>
-					<!-- /logo -->
-					
-<!--				</div>
-				
-
-				<!-- main nav -->
-   <!--             <nav class="collapse navbar-collapse navbar-right" role="navigation">
-					
-					<ul id="nav" class="nav navbar-nav">
-                        <li class="current"><a href="#body">Home</a></li>
-                        <!--<li><a href="#facts">Top Popular</a></li>-->
-   <!--                     <li><a href="#works">Vote</a></li>
-                        <!--<li><a href="#team">Team</a></li>-->
-  <!--                      <li><a href="#footer">Contact</a></li>
-                    </ul>
-                </nav>
-				<!-- /main nav -->
-				
-   <!--         </div>
-        </header>
-        <!--
-        End Fixed Navigation
-        ==================================== -->
-
-
 <div id='votealert'></div>
 <div id='votealertx'></div>
 
+    <!-- home
+    ================================================== -->
+<!--    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
 
-		<section id="facts" class="facts">
-			<div class="parallax-overlay">
-				<div class="container">
-					<div class="row number-counters">
-						
-						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
-							<h2>Top 3 Popular Players</h2>
-							<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-						</div>
+        <div class="overlay"></div>
+        <div class="shadow-overlay"></div>
 
-						<?php
-						
-						$players=$pl->getPlayers();
-						
+        <div class="home-content">
 
-						for ($i=0; $i <3 ; $i++) {
-							$id;
-							$player;
-							$uni='';
-							$sport='';
-							$image='';
-							$votes='';
+            <div class="row home-content__main">
 
-							foreach ($players[$i] as $x => $x_value) {
-								if ($x=='id') {
-								
-									$id=$x_value;
-							
-								}elseif ($x=='player_name') {
-									$player=$x_value;
-								}elseif ($x=='university') {
-									$uni=$x_value;
-								}elseif ($x=='sport') {
-									$sport=$x_value;
-								}elseif ($x=='image') {
-									$image=$x_value;
-								}elseif ($x=='number_of_votes') {
-									$votes=$x_value;
-								}
-								
-							}
+              <!--    <h3>Vote for your favourite player</h3>
 
-							if ($image=='') {
-								$img="no person.jpg";
-							}else {
-								$img=$image;
-							}
-							
-							echo'
-							<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" style="margin-left:30px;">
-							<div class="counters-item">
-							<img src="img/players/'.$image.'" style="border-radius:25%;" alt="" width="300px" height="300px">
-								<strong data-to="'.$votes.'">0</strong>
-								<!-- Set Your Number here. i,e. data-to="56" -->
-								<p>'.$player.'</p>
-							</div>
-							</div>
-							';}
-						?>
-					</div>
-				</div>
-			</div>
-		</section>
-		
-        <!--
-        End Some fun facts
-        ==================================== -->
+              <h1>
+                    Vote for Your Favorite Player<br>
+                    as the most<br>
+                    Popular Player in <br>
+                    inter university championship 2018.
+                </h1>   
 
-		<!--
-        Our Works
-        ==================================== -->
-		
-		<section id="works" class="works clearfix">
-			<div class="container">
-				<div class="row" style="align-content: center";>
+     <!--           <div class="home-content__buttons">
+                    <button onclick = "facebookSignin()" class="smoothscroll btn btn--stroke">Vote</button>
+                    
+                    <a href="#results" class="smoothscroll btn btn--stroke">
+                        View Results
+                    </a>
+                </div>   -->
 
-					<div class="project-wrapper" style="margin-left:30%;" >
-						<?php
 
-						$voted='0';
-						$voted_id='';
-						if ($p=$pl->getUserVotedPlayer($user)) {
 
-							if($p['voted_player'] ==''){
-								echo '<div class="sec-title text-center">
-						<h2>Vote For Your Player</h2>
-			<!--		<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
-					</div>';
-							}else{
-								$voted='1';
-								//print_r($p);
-								//echo"------------------------";
-							$p_id=$p['voted_player'];
-							$voted_id=$p_id;
-							$info=$pl->getSpecificPlayer($p_id);
-							$p_name=$info['player_name'];
-							$p_uni=$info['university'];
-							$p_sport=$info['sport'];
-							$p_image=$info['image'];
-							$p_vote=$info['number_of_votes'];
-							
-							echo '
-							<h3 class="sec-sub-title" style="font-weight: 900;color:#bf0f0f;font-size:30px;" >Your Voted Player</h3>
-							<br>
-							<div class="project-wrapper">
-							<figure class="mix work-item" style="width:50%">
-							<img src="img/players/'.$p_image.'" alt="" width="400px" height="300px">
-							<span>
-							<div class="sec-sub-title text-center" style="text-align:center;">
-						
-							<p style="font-size: 30px;">'.$p_name.'</p>
-							
-							<p>'.$p_uni.'</p>
-							
-							<p>'.$p_sport.'</p>
-						
-							<p>Number of Votes:'.$p_vote.'</p>
-							
-							</span>
-							
-						</figure>
-						</div>
-						<br>
-						<br>
-						';}
-							
-						}else{
+  <!--              <div class="intro-wrap">
+                
+            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
+                <div class="col-full">
+                    <h3 class="subhead">Inter University Sports Championship</h3>
+                    <h1 class="display-2 display-2--light">Top 5 Popular Players</h1>
+                </div>
+            </div> <!-- end section-header -->
 
-							print($user);
-						}
+ <!--       </div>
 
-						?>
-						
-						</div>
-					<br>
-					<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-					<div class="sec-title text-center">
-						<h2>Vote For Your Player</h2>
-			<!--		<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
-					</div>
 
-						
-					
-					<div class="sec-sub-title text-center">
-						<p>Now you can vote for your favourite player </p>
-			<!--			<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
-					</div>
-					
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			
-			<div class="project-wrapper">
-				<?php
-							$players=$pl->getPlayers();
-							
 
-							for ($i=0; $i <count($players) ; $i++) {
-								$id;
-								$player;
-								$uni='';
-								$sport='';
-								$image='';
-								$votes='';
+            </div>
 
-								foreach ($players[$i] as $x => $x_value) {
-									if ($x=='id') {
-									
-										$id=$x_value;
-								
-									}elseif ($x=='player_name') {
-										$player=$x_value;
-									}elseif ($x=='university') {
-										$uni=$x_value;
-									}elseif ($x=='sport') {
-										$sport=$x_value;
-									}elseif ($x=='image') {
-										$image=$x_value;
-									}elseif ($x=='number_of_votes') {
-										$votes=$x_value;
-									}
-									
-								}
+            <!--<div class="home-content__scroll">
+                <a href="#about" class="scroll-link smoothscroll">
+                    <span>Scroll Down</span>
+                </a>
+            </div>-->
 
-								if ($image=='') {
-									$img="no person.jpg";
-								}else {
-									$img=$image;
-								}
+            
 
-								if ($voted=='1') {
-									if ($voted_id==$id){
-										$class='vote_button_disabled';
-									}else{
-										$class='vote_button';
-									}
-								}else{
-									$class='vote_button';
-								}
+<!--        </div> <!-- end home-content -->
 
-								
 
-							echo'
-							
-				<figure class="mix work-item">
-				<img src="img/players/'.$img.'" alt="Player Image" width="400px" height="300px">
-				<!--===========vote block=============-->
-				<figcaption class="overlay">
-					<a class="fancybox" rel="works" title="Give Your Precious Vote" href="img/players/'.$img.'"><i class="fa fa-eye fa-lg"></i></a>
-					<h4>'.$player.'</h4>
-					<p>'.$uni.'</p>
-			
-				<button class="'.$class.'" style="width:80px;" onclick="document.getElementById(\''.$id.'\').style.display=\'block\'">Vote</button>
-					
-				</figcaption>
-				</figure>
-				<!--===========vote block=============-->
-				<div id="'.$id.'" class="modal">
-				<span onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" 
-			class="close" title="Close Modal">&times;</span>
-			
-				<!-- Modal Content -->
-				<form class="modal-content animate" method="Post" action="voteProccess.php?id='.$id.'&voted='.$voted.'&voted_id='.$voted_id.'">
-				<div class="imgcontainer">
-				<span onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="close" title="Close Modal">×</span>
-					<img src="img/players/'.$img.'" alt="Avatar" class="avatar">
-				</div>
-			
-				<div class="vote_container" style="text-align:center;">
+        <!--<ul class="home-social">
+            <li>
+                <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-behance" aria-hidden="true"></i><span>Behance</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
+            </li>
+        </ul> 
+        <!-- end home-social -->
 
-					<h2 >'.$player.'</h2>
-					<br>
-					<label >'.$uni.'</label>
-					<br>
-					<label >'.$sport.'</label>
-					
-					
-			
-				
-					<br>
-					<button class="vote_button" style="width: 80px;" name="submit" type="submit">Vote</button>
-					
-				</div>
-			
-				
-				</form>
+<!--    </section> <!-- end s-home -->
 
-				
-			</div>
-							
-														
-							';
 
-							}
-							
-							?>
-				
-			</div>
+    <!-- about
+    ================================================== -->
+<!--    <section id='about' class="s-about">
 
-		</section>
-		
-		
-		<footer id="footer" class="footer">
-			<div class="container">
-				<div class="row">			
-					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-						<div class="footer-single">
-							<h6>Explore</h6>
-							<ul>
-								<li><a href="#">Inside Us</a></li>
-								<li><a href="#">Flickr</a></li>
-								<li><a href="#">Google</a></li>
-								<li><a href="#">Forum</a></li>
-							</ul>
-						</div>
-					</div>
-				
-					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-						<div class="footer-single">
-							<h6>Support</h6>
-							<ul>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Market Blog</a></li>
-								<li><a href="#">Help Center</a></li>
-								<li><a href="#">Pressroom</a></li>
-							</ul>
-						</div>
-					</div>
-					
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p class="copyright text-center">
-							Copyright © 2015 <a href="http://themefisher.com/">Themefisher</a>. All rights reserved. Designed & developed by <a href="http://themefisher.com/">Themefisher</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		
-		<a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
+        <div class="row section-header has-bottom-sep" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead subhead--dark">Hello There</h3>
+                <h1 class="display-1 display-1--light">We Are Moraspirit</h1>
+            </div>
+        </div> <!-- end section-header -->
 
-		<!-- Essential jQuery Plugins
-		================================================== -->
-		<!-- Main jQuery -->
-        <script src="js/jquery-1.11.1.min.js"></script>
-		<!-- Single Page Nav -->
-        <script src="js/jquery.singlePageNav.min.js"></script>
-		<!-- Twitter Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
-		<!-- jquery.fancybox.pack -->
-        <script src="js/jquery.fancybox.pack.js"></script>
-		<!-- jquery.mixitup.min -->
-        <script src="js/jquery.mixitup.min.js"></script>
-		<!-- jquery.parallax -->
-        <script src="js/jquery.parallax-1.1.3.js"></script>
-		<!-- jquery.countTo -->
-        <script src="js/jquery-countTo.js"></script>
-		<!-- jquery.appear -->
-        <script src="js/jquery.appear.js"></script>
-		<!-- Contact form validation -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
-		<!-- Google Map -->
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-		<!-- jquery easing -->
-        <script src="js/jquery.easing.min.js"></script>
-		<!-- jquery easing -->
-        <script src="js/wow.min.js"></script>
-		<script>
-			var wow = new WOW ({
-				boxClass:     'wow',      // animated element css class (default is wow)
-				animateClass: 'animated', // animation css class (default is animated)
-				offset:       120,          // distance to the element when triggering the animation (default is 0)
-				mobile:       false,       // trigger animations on mobile devices (default is true)
-				live:         true        // act on asynchronously loaded content (default is true)
-			  }
-			);
-			wow.init();
-		</script> 
-		<!-- Custom Functions -->
-        <script src="js/custom.js"></script>
-		
-		<script type="text/javascript">
-			$(function(){
-				/* ========================================================================= */
-				/*	Contact Form
-				/* ========================================================================= */
-				
-				$('#contact-form').validate({
-					rules: {
-						name: {
-							required: true,
-							minlength: 2
-						},
-						email: {
-							required: true,
-							email: true
-						},
-						message: {
-							required: true
-						}
-					},
-					messages: {
-						name: {
-							required: "come on, you have a name don't you?",
-							minlength: "your name must consist of at least 2 characters"
-						},
-						email: {
-							required: "no email, no message"
-						},
-						message: {
-							required: "um...yea, you have to write something to send this form.",
-							minlength: "thats all? really?"
-						}
-					},
-					submitHandler: function(form) {
-						$(form).ajaxSubmit({
-							type:"POST",
-							data: $(form).serialize(),
-							url:"process.php",
-							success: function() {
-								$('#contact-form :input').attr('disabled', 'disabled');
-								$('#contact-form').fadeTo( "slow", 0.15, function() {
-									$(this).find(':input').attr('disabled', 'disabled');
-									$(this).find('label').css('cursor','default');
-									$('#success').fadeIn();
-								});
-							},
-							error: function() {
-								$('#contact-form').fadeTo( "slow", 0.15, function() {
-									$('#error').fadeIn();
-								});
-							}
-						});
-					}
-				});
-			});
-		</script>
-    </body>
+<!--        <div class="row about-desc" data-aos="fade-up">
+            <div class="col-full">
+                <p>
+                The Inter-University Championship 2018, the stage where all the phenomenal university athletes conquer for pride, honor, and glory has begun. Previous champions, University of Sri Jayawardanapura, along with 13 other universities have returned to the battle arena with the determination to crown their alma mater as the champions. Here, they are showing their worth to become the champions in 22 sports for over 3 months. During this time, heroes are made, saviors may emerge. Join with MoraSpirit to witness the history being created.
+                </p>
+            </div>
+        </div> <!-- end about-desc -->
+
+<!--        <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
+                
+            <div class="col-block stats__col ">
+                <div class="stats__count">22</div>
+                <h5>Games</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">29</div>
+                <h5>Universities</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">856</div>
+                <h5>Players</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">56434</div>
+                <h5>Votes</h5> 
+            </div>
+
+        </div> <!-- end about-stats -->
+
+<!--    </section> <!-- end s-about -->
+
+<section id="works" class="works clearfix">
+            <div class="container">
+                <div class="row" style="align-content: center";>
+
+                    <div class="project-wrapper" style="margin-left:30%;" >
+                        <?php
+
+                        $voted='0';
+                        $voted_id='';
+                        if ($p=$pl->getUserVotedPlayer($user)) {
+
+                            if($p['voted_player'] ==''){
+                                echo '<div class="sec-title text-center">
+                        <h2>Vote For Your Player</h2>
+            <!--        <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
+                    </div>';
+                            }else{
+                                $voted='1';
+                                //print_r($p);
+                                //echo"------------------------";
+                            $p_id=$p['voted_player'];
+                            $voted_id=$p_id;
+                            $info=$pl->getSpecificPlayer($p_id);
+                            $p_name=$info['player_name'];
+                            $p_uni=$info['university'];
+                            $p_sport=$info['sport'];
+                            $p_image=$info['image'];
+                            $p_vote=$info['number_of_votes'];
+                            
+                            echo '
+                            <h3 class="sec-sub-title" style="font-weight: 900;color:#bf0f0f;font-size:30px;" >Your Voted Player</h3>
+                            <br>
+                            <div class="project-wrapper">
+                            <figure class="mix work-item" style="width:50%">
+                            <img src="img/players/'.$p_image.'" alt="" width="400px" height="300px">
+                            <span>
+                            <div class="sec-sub-title text-center" style="text-align:center;">
+                        
+                            <p style="font-size: 30px;">'.$p_name.'</p>
+                            
+                            <p>'.$p_uni.'</p>
+                            
+                            <p>'.$p_sport.'</p>
+                        
+                            <p>Number of Votes:'.$p_vote.'</p>
+                            
+                            </span>
+                            
+                        </figure>
+                        </div>
+                        <br>
+                        <br>
+                        ';}
+                            
+                        }else{
+
+                            print($user);
+                        }
+
+                        ?>
+                        
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+    <!-- works
+    ================================================== -->
+    <section id='results' class="s-works">
+        <div class="intro-wrap">
+                
+            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
+                <div class="col-full">
+                    <h3 class="subhead">Inter University Sports Championship |2018</h3>
+                    <h1 class="display-2 display-2--light">Vote for your favorite player</h1>
+                </div>
+            </div> <!-- end section-header -->
+            <div class="row">
+            <?php
+                            $players=$pl->getPlayers();
+                            
+
+                            for ($i=0; $i <count($players) ; $i++) {
+                                $id;
+                                $player;
+                                $uni='';
+                                $sport='';
+                                $image='';
+                                $votes='';
+
+                                foreach ($players[$i] as $x => $x_value) {
+                                    if ($x=='id') {
+                                    
+                                        $id=$x_value;
+                                
+                                    }elseif ($x=='player_name') {
+                                        $player=$x_value;
+                                    }elseif ($x=='university') {
+                                        $uni=$x_value;
+                                    }elseif ($x=='sport') {
+                                        $sport=$x_value;
+                                    }elseif ($x=='image') {
+                                        $image=$x_value;
+                                    }elseif ($x=='number_of_votes') {
+                                        $votes=$x_value;
+                                    } 
+                                }
+
+                                if ($image=='') {
+                                    $img="no person.jpg";
+                                }else {
+                                    $img=$image;
+                                }
+                            echo '
+                                <div class="column">
+                                    <div class="card" data-aos="fade-up">
+                                        <img src="img/players/'.$img.'" alt="Player Image" style="width:100%">
+                                        <div class="container">
+                                          <h1>'.$player.'</h1>
+                                          <p class="title">'.$uni.'</p>
+                                          <p class="title">'.$sport.'</p>
+                                          <p class="title2">'.$votes.' Votes</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+    ';}
+    ?>      
+            </div>
+        </div> <!-- end intro-wrap -->
+   <!--<div class="row works-content">
+        </div> <!-- end works-content -->
+
+    </section> <!-- end s-works -->
+
+
+    <!-- contact
+    ================================================== -->
+    <section id="contact" class="s-contact">
+
+        <div class="overlay"></div>
+        
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Contact Us</h3>
+                <h1 class="display-2 display-2--light">Reach out for a new project or just say hello</h1>
+            </div>
+        </div>
+
+        <div class="row contact-content" data-aos="fade-up">
+            
+            <div class="contact-primary">
+
+                <h3 class="h6">Send Us A Message</h3>
+
+                <form name="contactForm" id="contactForm" method="post" action="" novalidate="novalidate">
+                    <fieldset>
+    
+                    <div class="form-field">
+                        <input name="contactName" type="text" id="contactName" placeholder="Your Name" value="" minlength="2" required="" aria-required="true" class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <input name="contactEmail" type="email" id="contactEmail" placeholder="Your Email" value="" required="" aria-required="true" class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="" class="full-width">
+                    </div>
+                    <div class="form-field">
+                        <textarea name="contactMessage" id="contactMessage" placeholder="Your Message" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
+                    </div>
+                    <div class="form-field">
+                        <button class="full-width btn--primary">Submit</button>
+                        <div class="submit-loader">
+                            <div class="text-loader">Sending...</div>
+                            <div class="s-loader">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    </fieldset>
+                </form>
+
+                <!-- contact-warning -->
+                <div class="message-warning">
+                    Something went wrong. Please try again.
+                </div> 
+            
+                <!-- contact-success -->
+                <div class="message-success">
+                    Your message was sent, thank you!<br>
+                </div>
+
+            </div> <!-- end contact-primary -->
+
+            <div class="contact-secondary">
+                <div class="contact-info">
+
+                    <h3 class="h6 hide-on-fullwidth">Contact Info</h3>
+
+                    <div class="cinfo">
+                        <h5>Where to Find Us</h5>
+                        <p>
+                            1600 Amphitheatre Parkway<br>
+                            Mountain View, CA<br>
+                            94043 US
+                        </p>
+                    </div>
+
+                    <div class="cinfo">
+                        <h5>Email Us At</h5>
+                        <p>
+                            contact@glintsite.com<br>
+                            info@glintsite.com
+                        </p>
+                    </div>
+
+                    <div class="cinfo">
+                        <h5>Call Us At</h5>
+                        <p>
+                            Phone: (+63) 555 1212<br>
+                            Mobile: (+63) 555 0100<br>
+                            Fax: (+63) 555 0101
+                        </p>
+                    </div>
+
+                    <ul class="contact-social">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        </li>
+                    </ul> <!-- end contact-social -->
+
+                </div> <!-- end contact-info -->
+            </div> <!-- end contact-secondary -->
+
+        </div> <!-- end contact-content -->
+
+    </section> <!-- end s-contact -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+
+        <div class="row footer-main">
+
+            <div class="col-six tab-full left footer-desc">
+
+                <div class="footer-logo"></div>
+                We are moraspirit. afssdsjh kjasdfas jhgdfjkhasgj hkgja gjkafgjkh gjhagsfj hgjag jhgaj
+
+            </div>
+
+            <div class="col-six tab-full right footer-subscribe">
+
+                <h4>Get Notified</h4>
+                <p>Reach us at any location. ajdfhkja kjajf kjhaj kjhsad</p>
+
+                <div class="subscribe-form">
+                    <form id="mc-form" class="group" novalidate="true">
+                        <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+                        <input type="submit" name="subscribe" value="Subscribe">
+                        <label for="mc-email" class="subscribe-message"></label>
+                    </form>
+                </div>
+
+            </div>
+
+        </div> <!-- end footer-main -->
+
+        <div class="row footer-bottom">
+
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>© MoraSpirit 2018</span> 
+                    <span>Site Template by <a href="https://www.colorlib.com/">Colorlib</a></span>	
+                </div>
+
+         <!--       <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                </div>  -->
+            </div>
+
+        </div> <!-- end footer-bottom -->
+
+    </footer> <!-- end footer -->
+
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
+                    "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
+                    "Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
+                "Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div> <!-- end photoSwipe background -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
 </html>
