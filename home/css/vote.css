@@ -12,11 +12,14 @@
 /*set style for disabled button*/
 .vote_button_disabled {
     background-color: #c92222;
-    display:none;
     color: white;
     border: none;
-    cursor: pointer;
+    /*cursor: pointer;*/
     width: 100%;
+    background-color: #b8b8b8;
+    border-color: #b8b8b8;
+    color: #000000;
+    opacity: 0.7;
 }
 
 .voted_image{
@@ -25,7 +28,7 @@
 
 /* Add a hover effect for buttons */
 .vote_button:hover {
-    opacity: 0.8;
+    /*opacity: 0.8;*/
 }
 
 

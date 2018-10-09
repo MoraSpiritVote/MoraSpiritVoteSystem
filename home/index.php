@@ -69,6 +69,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/vote.css">
 
     <!-- script
     ================================================== -->
@@ -304,26 +305,25 @@ function votingpg_un() {
                             $p_vote=$info['number_of_votes'];
                             
                             echo '
-                            <h3 class="sec-sub-title" style="font-weight: 900;color:#bf0f0f;font-size:25px;" >Your Voted Player</h3>
-                            <br>
-                            <div class="project-wrapper">
-                            <figure class="mix work-item" style="width:50%">
-                            <img src="img/players/'.$p_image.'" alt="" width="400px" height="300px">
-                            <span>
-                            <div class="sec-sub-title text-center" style="text-align:center;">
-                        
-                            <p style="font-size: 30px;">'.$p_name.'</p>
+                            <h3 class="sec-sub-title" style="font-weight: 900;color:white;font-size:25px; text-align:center" >Your Voted Player</h3>
+
+                            <!--<div class="project-wrapper">-->
+                            <div class="row">
+                            <div class="column">
+                            <!--<figure class="mix work-item">-->
+                            <img src="img/players/'.$p_image.'" alt="" style="display: block;margin-right: auto;width: 80%;height: auto;">
+                            </div>
+                            <div class="column">
+                            <div class="sec-sub-title text-center" style="text-align:left;">
+                            <h1 style="color: white;margin: 0px;padding: 0px;font-size: 2.0rem;">'.$p_name.'</h1>
+                            <p class="title">'.$p_uni.'</p>
+                            <p class="title">'.$p_sport.'</p>
+                            <p class="title2">Number of Votes: '.$p_vote.'</p>
+                            </div>
                             
-                            <p>'.$p_uni.'</p>
-                            
-                            <p>'.$p_sport.'</p>
-                        
-                            <p>Number of Votes: '.$p_vote.'</p>
-                            
-                            </span>
-                            
-                        </figure>
-                        </div><hr>
+                        <!--</figure>-->
+                        </div>
+                        <hr>
                         ';}
                             
                         }else{
@@ -392,11 +392,14 @@ function votingpg_un() {
 
                                     if ($voted_id==$id){
                                         $class='vote_button_disabled';
+                                        $dis='disabled';
                                     }else{
                                         $class='vote_button';
+                                        $dis='';
                                     }
                                 }else{
                                     $class='vote_button';
+                                    $dis='';
                                 }
 
                             if ($i%3==0) {
@@ -416,7 +419,7 @@ function votingpg_un() {
                                           <p class="title2">'.$votes.' Votes</p>
                                           <!--<div class="vote_container" style="text-align:center;">-->
 
-                                          <button class="'.$class.'" name="submit" type="submit">Vote</button>
+                                          <button class="'.$class.'" name="submit" type="submit" '.$dis.'>Vote</button>
                                             <!--</div>-->
                                         </div>
                                     </div>
