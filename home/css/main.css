@@ -461,7 +461,7 @@ th:last-child, td:last-child {
  * ## Spacing 
  * ------------------------------------------------------------------- */
 button, .btn {
-    margin-bottom: 1.2rem;
+    /*margin-bottom: 1.2rem;*/
 }
 
 fieldset {
@@ -794,8 +794,8 @@ input[type="button"] {
     letter-spacing: .3rem;
     height: 5.4rem;
     line-height: calc(5.4rem - .4rem);
-    padding: 0 3rem;
-    margin: 0 .3rem 1.2rem 0;
+    /*padding: 0 3rem;*/
+    /*margin: 0 .3rem 1.2rem 0;*/
     color: #000000;
     text-decoration: none;
     text-align: center;
@@ -2501,7 +2501,7 @@ html.no-csstransitions .home-content__main {
     color: white;
     margin: 0px;
     padding: 0px;
-    font-size: 2.4rem;
+    font-size: 2.0rem;
 }
 
 .title {
@@ -2513,7 +2513,7 @@ html.no-csstransitions .home-content__main {
 
 .title2 {
     color: green;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin: 0px;
     padding: 0px;
 }
@@ -2522,13 +2522,13 @@ button {
     border: none;
     outline: 0;
     display: inline-block;
-    padding: 8px;
+    
     color: white;
     background-color: #000;
     text-align: center;
     cursor: pointer;
     width: 100%;
-    font-size: 18px;
+    font-size: 1.6rem;
 }
 
 a {

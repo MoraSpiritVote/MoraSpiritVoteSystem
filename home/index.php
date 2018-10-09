@@ -351,7 +351,7 @@ function votingpg_un() {
                     <h1 class="display-2 display-2--light">Vote for your favorite player</h1>
                 </div>
             </div> <!-- end section-header -->
-            <div class="row">
+            <!--<div class="row">-->
             <?php
                             $players=$pl->getPlayers();
                             
@@ -398,9 +398,15 @@ function votingpg_un() {
                                 }else{
                                     $class='vote_button';
                                 }
+
+                            if ($i%3==0) {
+                                echo '<div class="row">';
+                            }
                             echo '
+                            <div class="column">
                             <form id="voteplayer" action="voteProccess.php?id='.$id.'&voted='.$voted.'&voted_id='.$voted_id.'" method="Post">
-                                <div class="column">
+                            ';
+                            echo '
                                     <div class="card" data-aos="fade-up">
                                         <img src="img/players/'.$img.'" alt="Player Image" style="width:100%">
                                         <div class="container">
@@ -408,18 +414,21 @@ function votingpg_un() {
                                           <p class="title">'.$uni.'</p>
                                           <p class="title">'.$sport.'</p>
                                           <p class="title2">'.$votes.' Votes</p>
-                                          <div class="vote_container" style="text-align:center;">
+                                          <!--<div class="vote_container" style="text-align:center;">-->
 
-                                          <button class="'.$class.'" style="width: 80px;" name="submit" type="submit">Vote</button>
-                                            </div>
+                                          <button class="'.$class.'" name="submit" type="submit">Vote</button>
+                                            <!--</div>-->
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </form>
+                                </form>
+                            </div>';
 
-    ';}
+                            if (($i+1)%3==0 || ($i+1)==count($players)) {
+                                echo '</div>';
+                            }
+    }
     ?>      
-            </div>
+           <!--</div>-->
         </div> <!-- end intro-wrap -->
    <!--<div class="row works-content">
         </div> <!-- end works-content -->
