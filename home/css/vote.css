@@ -1,0 +1,99 @@
+
+.vote_button {
+    background-color: #c92222;   /*dark red 2*/
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    right: 0px;
+     
+}
+
+/*set style for disabled button*/
+.vote_button_disabled {
+    background-color: #c92222;
+    display:none;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.voted_image{
+    opacity:0.5;
+}
+
+
+
+/* Add a hover effect for buttons */
+.vote_button:hover {
+    opacity: 0.8;
+}
+
+
+#votealert {
+    visibility: hidden;
+    min-width: 250px;
+    /*margin-right: 5px;*/
+    background-color: #20cc2e; /*green*/
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 75%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#votealert.show {
+    visibility: visible;
+    -webkit-animation: fadein 1.0s, fadeout 1.0s 4.0s;
+    animation: fadein 1.0s, fadeout 1.0s 4.0s;
+}
+#votealertx {
+    visibility: hidden;
+    min-width: 250px;
+    /*margin-right: 5px;*/
+    background-color: #e20b0b; /*red*/
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 75%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#votealertx.show {
+    visibility: visible;
+    -webkit-animation: fadein 1.0s, fadeout 1.0s 4.0s;
+    animation: fadein 1.0s, fadeout 1.0s 4.0s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

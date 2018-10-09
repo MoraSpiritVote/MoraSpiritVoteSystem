@@ -11,10 +11,6 @@
    $fr=$_SESSION['object'];
    $pl=$_SESSION['pl_object'];
 
-	
-
-	echo"11111111111111111111<br>";
-
     //print_r($pl->getPlayers());
     
     if (isset($_POST)) {
@@ -36,7 +32,6 @@
             $r2=$pl->addVote($id);
             $rr=$pl->updateUserVote($user,$id,$time_str);
         }
-        
         
 
         if ($r1=='0' and $r2=='0'and $rr=='0') {

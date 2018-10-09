@@ -43,13 +43,14 @@
     <!-- Fontawesome Icon font -->
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <!-- Twitter Bootstrap css -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- jquery.fancybox  -->
         <link rel="stylesheet" href="css/jquery.fancybox.css">
         <!-- animate -->
         <link rel="stylesheet" href="css/animate.css">
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/vote.css">
         <!-- media-queries -->
         <link rel="stylesheet" href="css/media-queries.css">
         <!-- vote popup page -->
@@ -276,9 +277,8 @@ function votingpg_un() {
 
 <section id="works" class="works clearfix">
             <div class="container">
-                <div class="row" style="align-content: center";>
-
-                    <div class="project-wrapper" style="margin-left:30%;" >
+                <div class="row">
+                    <div class="project-wrapper">
                         <?php
 
                         $voted='0';
@@ -287,9 +287,9 @@ function votingpg_un() {
 
                             if($p['voted_player'] ==''){
                                 echo '<div class="sec-title text-center">
-                        <h2>Vote For Your Player</h2>
+                                        <h2>Vote For Your Player</h2>
             <!--        <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
-                    </div>';
+                                      </div>';
                             }else{
                                 $voted='1';
                                 //print_r($p);
@@ -304,7 +304,7 @@ function votingpg_un() {
                             $p_vote=$info['number_of_votes'];
                             
                             echo '
-                            <h3 class="sec-sub-title" style="font-weight: 900;color:#bf0f0f;font-size:30px;" >Your Voted Player</h3>
+                            <h3 class="sec-sub-title" style="font-weight: 900;color:#bf0f0f;font-size:25px;" >Your Voted Player</h3>
                             <br>
                             <div class="project-wrapper">
                             <figure class="mix work-item" style="width:50%">
@@ -318,14 +318,12 @@ function votingpg_un() {
                             
                             <p>'.$p_sport.'</p>
                         
-                            <p>Number of Votes:'.$p_vote.'</p>
+                            <p>Number of Votes: '.$p_vote.'</p>
                             
                             </span>
                             
                         </figure>
-                        </div>
-                        <br>
-                        <br>
+                        </div><hr>
                         ';}
                             
                         }else{
@@ -339,7 +337,6 @@ function votingpg_un() {
                     </div>
                 </div>
             </section>
-
 
 
 
@@ -390,7 +387,19 @@ function votingpg_un() {
                                 }else {
                                     $img=$image;
                                 }
+
+                                if ($voted=='1') {
+
+                                    if ($voted_id==$id){
+                                        $class='vote_button_disabled';
+                                    }else{
+                                        $class='vote_button';
+                                    }
+                                }else{
+                                    $class='vote_button';
+                                }
                             echo '
+                            <form id="voteplayer" action="voteProccess.php?id='.$id.'&voted='.$voted.'&voted_id='.$voted_id.'" method="Post">
                                 <div class="column">
                                     <div class="card" data-aos="fade-up">
                                         <img src="img/players/'.$img.'" alt="Player Image" style="width:100%">
@@ -399,9 +408,14 @@ function votingpg_un() {
                                           <p class="title">'.$uni.'</p>
                                           <p class="title">'.$sport.'</p>
                                           <p class="title2">'.$votes.' Votes</p>
-                                        </div>
+                                          <div class="vote_container" style="text-align:center;">
+
+                                          <button class="'.$class.'" style="width: 80px;" name="submit" type="submit">Vote</button>
+                                            </div>
                                     </div>
                                 </div>
+                            </div>
+                        </form>
 
     ';}
     ?>      
@@ -411,7 +425,6 @@ function votingpg_un() {
         </div> <!-- end works-content -->
 
     </section> <!-- end s-works -->
-
 
     <!-- contact
     ================================================== -->
