@@ -151,130 +151,10 @@ function votingpg_un() {
         </a>
 
     </header> <!-- end s-header -->
-
+<br>
 <div id='votealert'></div>
 <div id='votealertx'></div>
 
-    <!-- home
-    ================================================== -->
-<!--    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
-
-        <div class="overlay"></div>
-        <div class="shadow-overlay"></div>
-
-        <div class="home-content">
-
-            <div class="row home-content__main">
-
-              <!--    <h3>Vote for your favourite player</h3>
-
-              <h1>
-                    Vote for Your Favorite Player<br>
-                    as the most<br>
-                    Popular Player in <br>
-                    inter university championship 2018.
-                </h1>   
-
-     <!--           <div class="home-content__buttons">
-                    <button onclick = "facebookSignin()" class="smoothscroll btn btn--stroke">Vote</button>
-                    
-                    <a href="#results" class="smoothscroll btn btn--stroke">
-                        View Results
-                    </a>
-                </div>   -->
-
-
-
-  <!--              <div class="intro-wrap">
-                
-            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
-                <div class="col-full">
-                    <h3 class="subhead">Inter University Sports Championship</h3>
-                    <h1 class="display-2 display-2--light">Top 5 Popular Players</h1>
-                </div>
-            </div> <!-- end section-header -->
-
- <!--       </div>
-
-
-
-
-            </div>
-
-            <!--<div class="home-content__scroll">
-                <a href="#about" class="scroll-link smoothscroll">
-                    <span>Scroll Down</span>
-                </a>
-            </div>-->
-
-            
-
-<!--        </div> <!-- end home-content -->
-
-
-        <!--<ul class="home-social">
-            <li>
-                <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-behance" aria-hidden="true"></i><span>Behance</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
-            </li>
-        </ul> 
-        <!-- end home-social -->
-
-<!--    </section> <!-- end s-home -->
-
-
-    <!-- about
-    ================================================== -->
-<!--    <section id='about' class="s-about">
-
-        <div class="row section-header has-bottom-sep" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead subhead--dark">Hello There</h3>
-                <h1 class="display-1 display-1--light">We Are Moraspirit</h1>
-            </div>
-        </div> <!-- end section-header -->
-
-<!--        <div class="row about-desc" data-aos="fade-up">
-            <div class="col-full">
-                <p>
-                The Inter-University Championship 2018, the stage where all the phenomenal university athletes conquer for pride, honor, and glory has begun. Previous champions, University of Sri Jayawardanapura, along with 13 other universities have returned to the battle arena with the determination to crown their alma mater as the champions. Here, they are showing their worth to become the champions in 22 sports for over 3 months. During this time, heroes are made, saviors may emerge. Join with MoraSpirit to witness the history being created.
-                </p>
-            </div>
-        </div> <!-- end about-desc -->
-
-<!--        <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
-                
-            <div class="col-block stats__col ">
-                <div class="stats__count">22</div>
-                <h5>Games</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">29</div>
-                <h5>Universities</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">856</div>
-                <h5>Players</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">56434</div>
-                <h5>Votes</h5> 
-            </div>
-
-        </div> <!-- end about-stats -->
-
-<!--    </section> <!-- end s-about -->
 
 <section id="works" class="works clearfix">
             <div class="container">
@@ -309,12 +189,12 @@ function votingpg_un() {
 
                             <!--<div class="project-wrapper">-->
                             <div class="row">
-                            <div class="column">
+                            <div class="column" style="text-align:left; margin-top:auto;margin-bottom:auto">
                             <!--<figure class="mix work-item">-->
-                            <img src="img/players/'.$p_image.'" alt="" style="display: block;margin-right: auto;width: 80%;height: auto;">
+                            <img src="img/players/'.$p_image.'" alt="" style="display: block;margin-left: auto;width: 80%;height: auto;border-radius: 10%;">
                             </div>
-                            <div class="column">
-                            <div class="sec-sub-title text-center" style="text-align:left;">
+                            <div class="column" style="text-align:left; margin-top:auto;margin-bottom:auto">
+                            <div class="sec-sub-title text-center" style="text-align:left; margin-top:auto;margin-bottom:auto">
                             <h1 style="color: white;margin: 0px;padding: 0px;font-size: 2.0rem;">'.$p_name.'</h1>
                             <p class="title">'.$p_uni.'</p>
                             <p class="title">'.$p_sport.'</p>
@@ -427,6 +307,14 @@ function votingpg_un() {
                             </div>';
 
                             if (($i+1)%3==0 || ($i+1)==count($players)) {
+                                if (($i+1)==count($players)) {
+                                    $j=count($players);
+                                    while (!($j%3==0)){
+                                        echo '<div class="column"></div>';
+                                        $j=($j+1);
+                                    }
+
+                                }
                                 echo '</div>';
                             }
     }
