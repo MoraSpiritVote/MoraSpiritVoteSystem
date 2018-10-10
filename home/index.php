@@ -191,7 +191,7 @@ function votingpg_un() {
                             <div class="row">
                             <div class="column" style="text-align:left; margin-top:auto;margin-bottom:auto">
                             <!--<figure class="mix work-item">-->
-                            <img src="img/players/'.$p_image.'" alt="" style="display: block;margin-left: auto;width: 80%;height: auto;border-radius: 10%;">
+                            <img id="votedI" src="img/players/'.$p_image.'" alt="" style="display: block;width: 80%;height: auto;border-radius: 10%;max-width:400px;">
                             </div>
                             <div class="column" style="text-align:left; margin-top:auto;margin-bottom:auto">
                             <div class="sec-sub-title text-center" style="text-align:left; margin-top:auto;margin-bottom:auto">

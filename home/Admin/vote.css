@@ -1,0 +1,255 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    
+    display: inline-block;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+input[type=text]:focus{
+    color: black;
+    
+    border: 1px solid #d11414;   /*dark red 1*/
+    outline: 0;
+    box-shadow: inset 0px 0px 0px 1px #d11414;  /*dark red 1*/ 
+    
+}
+
+/* Set a style for all buttons */
+.vote_button {
+    background-color: #c92222;   /*dark red 2*/
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    right: 0px;
+     
+    
+    
+    
+    
+}
+
+.edit_button {
+    background-color: rgba(10, 15, 10, 0.801);
+    color: white;
+    opacity:0.5;
+    padding:7px 5px;
+    left:0px;
+     
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width:90px;
+}
+
+.edit_button:hover{
+    opacity:1;
+}
+/*set style for disabled button*/
+.vote_button_disabled {
+    background-color: #c92222;
+    display:none;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.voted_image{
+    opacity:0.5;
+}
+
+
+
+/* Add a hover effect for buttons */
+.vote_button:hover {
+    opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: 80px;
+    margin-left:80%;
+    padding: 10px 18px;
+    background-color: #ff857c;  /*light red 1 must change*/
+    color: white;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 12px 0 6px 0;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+img.avatar:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+
+
+/* Add padding to containers */
+.vote_container {
+    padding: 10px;
+    
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height:100%; /* Full height */
+    overflow: auto;
+
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 20px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10px auto; /* 15% from the top and centered */
+    top: 20%;
+    
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0; 
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+
+#votealert {
+    visibility: hidden;
+    min-width: 250px;
+    /*margin-right: 5px;*/
+    background-color: #20cc2e; /*green*/
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 75%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#votealert.show {
+    visibility: visible;
+    -webkit-animation: fadein 1.0s, fadeout 1.0s 4.0s;
+    animation: fadein 1.0s, fadeout 1.0s 4.0s;
+}
+#votealertx {
+    visibility: hidden;
+    min-width: 250px;
+    /*margin-right: 5px;*/
+    background-color: #e20b0b; /*red*/
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 75%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#votealertx.show {
+    visibility: visible;
+    -webkit-animation: fadein 1.0s, fadeout 1.0s 4.0s;
+    animation: fadein 1.0s, fadeout 1.0s 4.0s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

@@ -1,4 +1,3 @@
-
 .vote_button {
     background-color: #c92222;   /*dark red 2*/
     color: white;
@@ -283,4 +282,19 @@
     bottom: 35px;
     font-size: 15px;
 }
+}
+
+
+@media only screen and (max-width: 1500px) {
+    #votedI{
+        margin-left: auto;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    #votedI{
+        margin-left: unset;
+        margin-right: auto;
+    }
 }

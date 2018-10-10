@@ -110,3 +110,40 @@
 
                             echo '
                             </form>
+
+
+
+
+
+                            <!--popup voting form-->
+
+                  <!-- The Modal -->
+            <div id="'.$id.'" class="modal">
+              <span onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="close" title="Close Modal">&times;</span>
+            
+              <!-- Modal Content -->
+              <form class="modal-content animate" method="Post" enctype="multipart/form-data" action="playersEditProccess.php?id='.$id.'&im='.$image.'">
+              <div class="imgcontainer">
+                <img src="../img/players/'.$img.'" alt="Avatar" class="avatar" onclick="document.getElementById(\'image'.$id.'\').style.display=\'block\'" >
+                <button class="vote_button" style="width: 80px;background-color:red;" name="delete" onclick="window.alert(\'are you sure you want to delete this player?\')" type="submit">Delete</button>
+                </div>
+              <div class="vote_container">
+                <input type="file" id="image'.$id.'" name="image" style="display:none;" >
+                <br>
+                <label>Player Name</label>
+                <input type="text" name="player" value="'.$player.'">
+                <label>University Name</label>
+                <input type="text" name="uni" value="'.$uni.'" >
+                <label>Participating Sport</label>
+                <input type="text" name="sport" value="'.$sport.'">
+                <button class="vote_button" style="width: 80px;" name="submit" type="submit">Submit</button>
+                <span><button type="button" onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="vote_button" style="background-color:red;width:80px;">Cancel</button></span >   
+              </div>     
+              </form>          
+            </div>
+
+            <!--end popup voting form-->
+                
+
+
+                <span class="close" title="Close Modal">&times;</span>

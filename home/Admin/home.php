@@ -14,7 +14,7 @@ if (isset($_SESSION['user'])) {
 	$user=$_SESSION['user'];
 }else{
 	echo"eeeeeeeeeeeee";
-	header("Location:login.php");
+	header("Location:index.php");
 }
 if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
     
@@ -48,13 +48,13 @@ $_SESSION['PM_object']=$pm;
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lumino - Dashboard</title>
+	<title>MSP Vote - Admin</title>
 	<link href="../css/bootstrap1.min.css" rel="stylesheet">
 	<link href="../css/font-awesome1.min.css" rel="stylesheet">
 	<link href="../css/datepicker3.css" rel="stylesheet">
 	<link href="../css/styles.css" rel="stylesheet">
 	<!-- vote popup page -->
-	<link rel="stylesheet" href="../css/vote.css">
+	<link rel="stylesheet" href="vote.css">
 	
 	<link rel="icon" type="image/png" href="includes/images/icons/favicon.ico"/>
 	
@@ -80,9 +80,9 @@ $_SESSION['PM_object']=$pm;
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Mora Spirit Voting</span>Admin</a>
+				<a class="navbar-brand" href="#"><span>Mora Spirit Voting </span>Admin Panel</a>
 				<ul class="nav navbar-top-links navbar-right">
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+					<!--<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
 					</a>
 						<ul class="dropdown-menu dropdown-messages">
@@ -112,8 +112,8 @@ $_SESSION['PM_object']=$pm;
 								</a></div>
 							</li>
 						</ul>
-					</li>
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+					</li>-->
+					<!--<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<em class="fa fa-bell"></em><span class="label label-info">5</span>
 						</a>
 						<ul class="dropdown-menu dropdown-alerts">
@@ -132,12 +132,14 @@ $_SESSION['PM_object']=$pm;
 									<span class="pull-right text-muted small">4 mins ago</span></div>
 							</a></li>
 						</ul>
-					</li>
+					</li>-->
+					<li>
 					<?php
 					if (isset($_SESSION['user'])) {
-                        echo 'loggedin: ' . strtoupper($user) . ' &nbsp;<a href="?logout=true"><strong>logout</strong></a>';
+                        echo '<a href="?logout=true"><h4 style="color:red;"><b>logout</b></h4></a>';
 					}
 					?>
+				</li>
 				</ul>
 			</div>
 		</div><!-- /.container-fluid -->
@@ -148,20 +150,24 @@ $_SESSION['PM_object']=$pm;
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
+				<div class="profile-usertitle-name"><?php
+					if (isset($_SESSION['user'])) {
+                        echo ($user);
+					}
+					?></div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="divider"></div>
-		<form role="search">
+		<!--<form role="search">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search">
 			</div>
-		</form>
+		</form>-->
 		<ul class="nav menu">
-			<li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-			<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
+			<li class="active"><a href="home.php"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+			<!--<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
 			<li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
 			<li><a href="edit UI/vote_page.php"><em class="fa fa-toggle-off">&nbsp;</em>Edit UI</a></li>
 			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
@@ -179,8 +185,8 @@ $_SESSION['PM_object']=$pm;
 						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3
 					</a></li>
 				</ul>
-			</li>
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			</li>-->
+			<li><a href="?logout=true"><em class="fa fa-power-off">&nbsp;</em>Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
@@ -253,29 +259,11 @@ $_SESSION['PM_object']=$pm;
 										<td class="column2">'.$uni.'</td>
 										<td class="column3">'.$sport.'</td>
 										<td class="column4">'.$votes.'</td>
-				
-										
 								</tr>
 								';
-
-
-
 							}
 							
-				
-							
-							
-							
-							
-							
-							?>
-
-
-
-								
-								
-								
-								
+							?>	
 								
 						</tbody>
 					</table>
@@ -306,86 +294,48 @@ $_SESSION['PM_object']=$pm;
 									}elseif ($y=='number_of_votes') {
 										$votes=$y_value;
 									}
-									
 								}
-
-								
-
 								if ($image=='') {
 									$img="no person.jpg";
 								}else {
 									$img=$image;
 								}
-
-								
-
 								echo'
-
 								<!--popup voting form-->
 
 									<!-- The Modal -->
 						<div id="'.$id.'" class="modal">
-							<span onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="close" title="Close Modal">&times;</span>
-						
 							<!-- Modal Content -->
-							<form class="modal-content animate" method="Post" enctype="multipart/form-data" action="playersEditProccess.php?id='.$id.'&im='.$image.'">
+							<form class="modal-content animate" method="Post" enctype="multipart/form-data" action="playersEditProccess.php?id='.$id.'&im='.$image.'" onsubmit="return confirm(\'Are you sure you want to submit?\');">
+								<span onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="close" title="Close">&times;</span>
 							<div class="imgcontainer">
 								<img src="../img/players/'.$img.'" alt="Avatar" class="avatar" onclick="document.getElementById(\'image'.$id.'\').style.display=\'block\'" >
-								<button class="vote_button" style="width: 80px;background-color:red;" name="delete" onclick="window.alert(\'are you sure you want to delete this player?\')" type="submit">Delete</button>
+								<button class="vote_button" style="width: 80px;background-color:red;" name="delete" type="submit">Delete</button>
 								</div>
 						
 							<div class="vote_container">
 
-								<input type="file" id="image'.$id.'" name="image" style="display:none;" >
+								<input type="file" id="image'.$id.'" name="image" style="display:none;">
+								<label>for best result : Add 300 x 300 photo</label>
 								<br>
 								
 								<label>Player Name</label>
-								<input type="text" name="player" value="'.$player.'">
+								<input type="text" name="player" value="'.$player.'" required>
 								<label>University Name</label>
-								<input type="text" name="uni" value="'.$uni.'" >
+								<input type="text" name="uni" value="'.$uni.'" required>
 								<label>Participating Sport</label>
-								<input type="text" name="sport" value="'.$sport.'">
-
+								<input type="text" name="sport" value="'.$sport.'" required>
 								
 						
 								<button class="vote_button" style="width: 80px;" name="submit" type="submit">Submit</button>
 								<span><button type="button" onclick="document.getElementById(\''.$id.'\').style.display=\'none\'" class="vote_button" style="background-color:red;width:80px;">Cancel</button></span >
-								
-						
-								
-								
 							</div>
-						
-							
 							</form>
-							
-
-							
 						</div>
-
 						<!--end popup voting form-->
 								';
-
-
-
 							}
-							
-				
-							
-							
-							
-							
-							
-							?>
-
-
-
-
-
-
-
-
-
+						?>
 				</div>
 			</div>
 
@@ -395,10 +345,10 @@ $_SESSION['PM_object']=$pm;
 
 						<!-- The Modal -->
 						<div id="add" class="modal">
-				<span onclick="document.getElementById('add').style.display='none'" class="close" title="Close Modal">&times;</span>
 			
 				<!-- Modal Content -->
-				<form class="modal-content animate" method="Post" enctype="multipart/form-data" action="addPlayerProccess.php">
+				<form class="modal-content animate" method="Post" enctype="multipart/form-data" action="addPlayerProccess.php" onsubmit="return confirm('Are you sure you want to submit?');">
+					<span onclick="document.getElementById('add').style.display='none'" class="close" title="Close">&times;</span>
 				<div class="imgcontainer">
 					<img src="../img/players/no person.jpg" alt="Avatar" class="avatar" onclick="document.getElementById('photoChooser').style.display='block'" >
 				</div>
@@ -406,7 +356,8 @@ $_SESSION['PM_object']=$pm;
 				<div class="vote_container">
 					<div id="photoChooser" style="display:none;">
 						<label>Image</label>
-					<input type="file" name="image"  >
+					<input type="file" name="image">
+					<label>for best result : Add 300 x 300 photo</label>
 					</div>
 					<br>
 					
@@ -416,11 +367,7 @@ $_SESSION['PM_object']=$pm;
 					<input type="text" name="uni" required >
 					<label>Participating Sport</label>
 					<input type="text" name="sport" required>
-
-					
-			
 				
-			
 					<button class="vote_button" style="width: 80px;" name="submit" type="submit">Submit</button>
 					
 					<span><button type="button" onclick="document.getElementById('add').style.display='none'" class="vote_button" style="background-color:red;width:80px;">Cancel</button></span >
@@ -446,21 +393,7 @@ $_SESSION['PM_object']=$pm;
 			<!--end popup voting form-->
 		</div>
 	</div>
-		
-		
-		
-		<!--======================================================-->
-		
-		
-		
-		
-
-
-		
-		
-		
-		
-		
+	
 	</div>	<!--/.main-->
 	
 	<script src="../js/jquery-1.11.1.min.js"></script>

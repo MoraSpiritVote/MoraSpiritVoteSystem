@@ -29,7 +29,7 @@ function logout()
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../css/vote.css">
+<link rel="stylesheet" href="vote.css">
 
 </head>
 <body onload=
@@ -43,24 +43,13 @@ function logout()
     }elseif ($_GET['pg']=='pg_ferr') {
         echo "\"document.getElementById('e2').style.display='block'\"";
     }elseif ($_GET['pg']=='pg_del') {
-		
         echo "\"document.getElementById('del').style.display='block'\"";
     }
-
-
-
-
-
-
-
-
-
-
 
 ?>>
 
 
-			<div id="success" class="modal">
+			<div id="success" class="modal" style="display: none;">
 				<span onclick="document.getElementById('success').style.display='none'" 
 			    class="close" title="Close Modal">&times;</span>
 			
@@ -87,7 +76,7 @@ function logout()
 				
 			</div>
 
-            <div id="e1" class="modal">
+            <div id="e1" class="modal" style="display: none;">
 				<span onclick="document.getElementById('e1').style.display='none'" 
 			    class="close" title="Close Modal">&times;</span>
 			
@@ -114,7 +103,7 @@ function logout()
 				
 			</div>
 
-            <div id="e2" class="modal">
+            <div id="e2" class="modal" style="display: none;">
 				<span onclick="document.getElementById('e2').style.display='none'" 
 			    class="close" title="Close Modal">&times;</span>
 			
@@ -141,7 +130,7 @@ function logout()
 				
 			</div>
 
-            <div id="del" class="modal">
+            <div id="del" class="modal" style="display: none;">
 				<span onclick="document.getElementById('del').style.display='none'" 
 			    class="close" title="Close Modal">&times;</span>
 			

@@ -10,14 +10,6 @@ if (isset($_POST)) {
     $encPass=md5($pass);
     login($user,$encPass);
 
-
-   
-    
-    
-    
-
-
-
 }
 
 
@@ -39,7 +31,7 @@ function login($user,$pass){
                 header("Location:home.php");
                 
             } else {
-                header("Location:login.php?err");
+                header("Location:index.php?err");
             }
             
             
