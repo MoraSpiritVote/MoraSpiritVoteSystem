@@ -6,13 +6,22 @@
         $filename = "includes/". $classname .".php";
         include_once($filename);
     }
-   
-    $user=$_SESSION['user'];
-    $fr=new frontPage();
-    $_SESSION['object']=$fr;
+  
+    if (isset($_SESSION['user'])) {
+        $user=$_SESSION['user'];
+    }else{
+        //echo"eeeeeeeeeeeee";
+        header("Location:../index.php");
+    }
+
+
+    //$fr=new frontPage();
+    //$_SESSION['object']=$fr;
     $pl=new playerManager();
     $_SESSION['pl_object']=$pl;
+    //print('adgfsdfgfaddfhdfgfgdsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafgfdsssssss');
     //print_r($_SESSION);
+    //print_r(expression)
 ?>
 
 <!DOCTYPE html>
@@ -165,12 +174,10 @@ function votingpg_un() {
                         $voted='0';
                         $voted_id='';
                         if ($p=$pl->getUserVotedPlayer($user)) {
-
+                            //echo "-----------------------------------------------------------";
+                            //print ($user);
                             if($p['voted_player'] ==''){
-                                echo '<div class="sec-title text-center">
-                                        <h2>Vote For Your Player</h2>
-            <!--        <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>-->
-                                      </div>';
+                                echo '';
                             }else{
                                 $voted='1';
                                 //print_r($p);
@@ -208,7 +215,7 @@ function votingpg_un() {
                             
                         }else{
 
-                            print($user);
+                            //print($user);
                         }
 
                         ?>

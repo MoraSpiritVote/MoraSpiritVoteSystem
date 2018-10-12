@@ -2,7 +2,7 @@
     ob_start();
     include_once 'home/includes/dbConnection.php';
 
-print_r($_POST);
+//print_r($_POST);
 
 $uid=$_GET['uid'];
 login($uid);
@@ -16,7 +16,7 @@ function login($uid){
     $conn=$dbConn->connect();
     echo"INSERT IGNORE INTO user_list (uid,voted_player, voted_time) VALUES ('".$uid."','','')";
     if ($conn) {
-        echo"qqqqqqq";
+        //echo"qqqqqqq";
         
         if ($ex=$conn->query($sql)) {
             unset($dbConn);

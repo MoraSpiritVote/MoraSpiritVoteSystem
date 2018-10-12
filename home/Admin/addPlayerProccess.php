@@ -97,13 +97,8 @@ if (isset($_POST)) {
         }else {
             $pg='pg_s';
         }
-
-        
-    
-        
     }
   
-
     header("Location:playersEditFeedback.php?pg={$pg}");
     
 }

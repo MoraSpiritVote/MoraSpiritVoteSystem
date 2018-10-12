@@ -50,8 +50,8 @@ function logout()
 
 
 			<div id="success" class="modal" style="display: none;">
-				<span onclick="document.getElementById('success').style.display='none'" 
-			    class="close" title="Close Modal">&times;</span>
+				<!--<span onclick="document.getElementById('success').style.display='none'" 
+			    class="close" title="Close Modal">&times;</span>-->
 			
 				<!-- Modal Content -->
 				<div class="modal-content animate" >
@@ -77,8 +77,8 @@ function logout()
 			</div>
 
             <div id="e1" class="modal" style="display: none;">
-				<span onclick="document.getElementById('e1').style.display='none'" 
-			    class="close" title="Close Modal">&times;</span>
+				<!--<span onclick="document.getElementById('e1').style.display='none'" 
+			    class="close" title="Close Modal">&times;</span>-->
 			
 				<!-- Modal Content -->
 				<div class="modal-content animate" >
@@ -104,8 +104,8 @@ function logout()
 			</div>
 
             <div id="e2" class="modal" style="display: none;">
-				<span onclick="document.getElementById('e2').style.display='none'" 
-			    class="close" title="Close Modal">&times;</span>
+				<!--<span onclick="document.getElementById('e2').style.display='none'" 
+			    class="close" title="Close Modal">&times;</span>-->
 			
 				<!-- Modal Content -->
 				<div class="modal-content animate" >
@@ -131,8 +131,8 @@ function logout()
 			</div>
 
             <div id="del" class="modal" style="display: none;">
-				<span onclick="document.getElementById('del').style.display='none'" 
-			    class="close" title="Close Modal">&times;</span>
+				<!--<span onclick="document.getElementById('del').style.display='none'" 
+			    class="close" title="Close Modal">&times;</span>-->
 			
 				<!-- Modal Content -->
 				<div class="modal-content animate" >

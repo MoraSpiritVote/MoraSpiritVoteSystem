@@ -38,11 +38,11 @@
             $pg='pg_s';
 
         }else{
-            print($r1);
-            print($r2);
-            print($rr);
+            //print($r1);
+            //print($r2);
+            //print($rr);
             $pg='pg_un';
-            echo"UPDATE `user_list` SET `voted_player`='".$player_id."',`voted_time`='".$time."' WHERE uid='".$user."'";
+            //echo"UPDATE `user_list` SET `voted_player`='".$player_id."',`voted_time`='".$time."' WHERE uid='".$user."'";
         }
 
         header("Location:index.php?pg={$pg}");

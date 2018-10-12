@@ -1,13 +1,15 @@
 <?php
     session_start();
+
     // we've writen this code where we need
     function __autoload($classname) {
         $filename = "home/includes/". $classname .".php";
         include_once($filename);
     }
 
+  
     $pl=new playerManager();
-    $_SESSION['pl_object']=$pl;
+    //$_SESSION['pl_object']=$pl;
 ?>
 
 <!DOCTYPE html>
@@ -100,9 +102,9 @@ function facebookSignin() {
    .then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
-    
+      //console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
       if(user.uid!=null){
-    
+    //console.log(user.getToken());
     window.location.href = "index-proccess.php?uid="+user.uid;
 }
    }).catch(function(error) {
@@ -127,6 +129,8 @@ function facebookSignout() {
 <script>
 var user = firebase.auth().currentUser;
 var name, email, photoUrl, uid, emailVerified;
+//console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+//console.log(user);
 
 if (user != null) {
   name = user.displayName;
@@ -218,26 +222,6 @@ if (user != null) {
 
         </div> <!-- end home-content -->
 
-
-        <!--<ul class="home-social">
-            <li>
-                <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-behance" aria-hidden="true"></i><span>Behance</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
-            </li>
-        </ul> 
-        <!-- end home-social -->
-
     </section> <!-- end s-home -->
 
 
@@ -267,7 +251,7 @@ if (user != null) {
                 <h5>Games</h5>
             </div>
             <div class="col-block stats__col">
-                <div class="stats__count">29</div>
+                <div class="stats__count">17</div>
                 <h5>Universities</h5>
             </div>
             <div class="col-block stats__col">
@@ -275,7 +259,7 @@ if (user != null) {
                 <h5>Players</h5>
             </div>
             <div class="col-block stats__col">
-                <div class="stats__count">56434</div>
+                <div class="stats__count">6434</div>
                 <h5>Votes</h5> 
             </div>
 
@@ -294,12 +278,12 @@ if (user != null) {
                     <h1 class="display-2 display-2--light">Top 5 Popular Players</h1>
                 </div>
             </div> <!-- end section-header -->
-            <div class="row">
+            <!--<div class="row">-->
             <?php
                             $players=$pl->getPlayers();
                             
-
-                            for ($i=0; $i <5 ; $i++) {
+                            $count=5;
+                            for ($i=0; $i <$count ; $i++) {
                                 $id;
                                 $player;
                                 $uni='';
@@ -330,6 +314,9 @@ if (user != null) {
                                 }else {
                                     $img=$image;
                                 }
+                                if ($i%3==0) {
+                                echo '<div class="row">';
+                            }
                             echo '
                                 <div class="column">
                                     <div class="card" data-aos="fade-up">
@@ -339,11 +326,26 @@ if (user != null) {
                                           <p class="title">'.$uni.'</p>
                                           <p class="title">'.$sport.'</p>
                                           <p class="title2">'.$votes.' Votes</p>
+
                                         </div>
                                     </div>
-                                </div>
+                                </div>';
 
-    ';}
+                                if (($i+1)%3==0 || ($i+1)==$count) {
+                                if (($i+1)==$count) {
+                                    $j=$count;
+                                    while (!($j%3==0)){
+                                        echo '<div class="column"></div>';
+                                        $j=($j+1);
+                                    }
+
+                                }
+                                echo '</div>';
+                            }
+
+
+
+                            }
     ?>      
             </div>
         </div> <!-- end intro-wrap -->
@@ -355,7 +357,7 @@ if (user != null) {
 
     <!-- contact
     ================================================== -->
-    <section id="contact" class="s-contact">
+<!--    <section id="contact" class="s-contact">
 
         <div class="overlay"></div>
         
@@ -404,18 +406,18 @@ if (user != null) {
                 </form>
 
                 <!-- contact-warning -->
-                <div class="message-warning">
+<!--            <div class="message-warning">
                     Something went wrong. Please try again.
                 </div> 
             
                 <!-- contact-success -->
-                <div class="message-success">
+<!--                <div class="message-success">
                     Your message was sent, thank you!<br>
                 </div>
 
             </div> <!-- end contact-primary -->
 
-            <div class="contact-secondary">
+<!--            <div class="contact-secondary">
                 <div class="contact-info">
 
                     <h3 class="h6 hide-on-fullwidth">Contact Info</h3>
@@ -464,16 +466,17 @@ if (user != null) {
                         </li>
                     </ul> <!-- end contact-social -->
 
-                </div> <!-- end contact-info -->
-            </div> <!-- end contact-secondary -->
+ <!--               </div> <!-- end contact-info -->
+<!--            </div> <!-- end contact-secondary -->
 
-        </div> <!-- end contact-content -->
+<!--        </div> <!-- end contact-content -->
 
-    </section> <!-- end s-contact -->
+<!--    </section> <!-- end s-contact -->
 
 
     <!-- footer
     ================================================== -->
+    <section id="contact">
     <footer>
 
         <div class="row footer-main">
@@ -506,8 +509,8 @@ if (user != null) {
 
             <div class="col-twelve">
                 <div class="copyright">
-                    <span>© MoraSpirit 2018</span> 
-                    <span>Site Template by <a href="https://www.colorlib.com/">Colorlib</a></span>	
+                    <span>© MoraSpirit</span> 
+                    <span>2018</span>	
                 </div>
 
          <!--       <div class="go-top">
@@ -518,7 +521,7 @@ if (user != null) {
         </div> <!-- end footer-bottom -->
 
     </footer> <!-- end footer -->
-
+</section>
 
     <!-- photoswipe background
     ================================================== -->
