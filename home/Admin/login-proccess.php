@@ -2,7 +2,7 @@
 
     include_once '../includes/dbConnection.php';
 
-print_r($_POST);
+//print_r($_POST);
 
 if (isset($_POST)) {
     $user=$_POST['Username'];
