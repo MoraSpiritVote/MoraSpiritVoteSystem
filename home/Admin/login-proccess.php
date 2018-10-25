@@ -22,7 +22,7 @@ function login($user,$pass){
         if ($ex=$conn->query($sql)) {
             unset($dbConn);
             $result=mysqli_fetch_assoc($ex);
-            print_r($result);
+            //print_r($result);
             $password=$result['password'];
 
             if ($pass===$password) {
