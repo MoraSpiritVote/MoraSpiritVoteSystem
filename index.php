@@ -247,11 +247,11 @@ if (user != null) {
         <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
                 
             <div class="col-block stats__col ">
-                <div class="stats__count">22</div>
+                <div class="stats__count"><?php print ($pl->getCount('sport')); ?></div>
                 <h5>Games</h5>
             </div>
             <div class="col-block stats__col">
-                <div class="stats__count">17</div>
+                <div class="stats__count"><?php print ($pl->getCount('university')); ?></div>
                 <h5>Universities</h5>
             </div>
             <div class="col-block stats__col">
@@ -259,7 +259,7 @@ if (user != null) {
                 <h5>Players</h5>
             </div>
             <div class="col-block stats__col">
-                <div class="stats__count">6434</div>
+                <div class="stats__count"><?php print ($pl->getCount('number_of_votes')); ?></div>
                 <h5>Votes</h5> 
             </div>
 

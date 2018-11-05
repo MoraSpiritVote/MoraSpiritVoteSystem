@@ -20,18 +20,10 @@
                    
                     }
 
-                    
-              
-
-                
-
                 } 
                 else {
                     die('query not executed!!!');
                 }
-            
-            
-            
             
             } else {
             die('Connection Failed!!!');
@@ -60,9 +52,7 @@
                     $r="1";
                     //die('query not executed!!!');
                 }
-                
-                
-                
+
                 
             } else {
                 $r="2";
@@ -289,14 +279,11 @@
                     mysqli_close($conn);
                     $r='0';
                     
-
                 } else {
                     $r="1";
                     //die('query not executed!!!');
                 }
-                
-                
-                
+                   
                 
             } else {
                 $r="2";
@@ -307,19 +294,23 @@
             
         }
 
-
-
-
-
-
-
+        public function getCount($name){
+            $sql="SELECT COUNT(university) as university,COUNT(sport) as sport,SUM(number_of_votes) as number_of_votes FROM vote_table WHERE university IN (SELECT DISTINCT university FROM vote_table) AND sport IN (SELECT DISTINCT sport FROM vote_table)";
+            $conn=$this->connect();
+            if ($conn) {
+                if ($ex=$conn->query($sql)) {
+                    mysqli_close($conn);
+                    $result=mysqli_fetch_assoc($ex);  
+                } 
+                else {
+                    die('query not executed!!!');
+                }
+            } else {
+            die('Connection Failed!!!');
+            }
+            return ($result[''.$name.'']);
+        }
 
     }
-
-
-
-
-
-
 
 ?>
